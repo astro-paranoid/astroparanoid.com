@@ -1,0 +1,18 @@
+footer{
+  position:fixed;
+  bottom:0;
+  right:0;
+  left:0;
+  background-color:rgba(128, 128, 128, 0.3);
+}
+
+.fixed-nav > ul{
+  display:flex;
+  justify-content: space-evenly;
+}
+
+header{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}

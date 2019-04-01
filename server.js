@@ -22,7 +22,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
 // LISTEN ON PORT
-app.listen(PORT, () => console.log(`Book app listening on ${PORT}`));
+app.listen(PORT, () => console.log(`Astro-Paranoid listening on ${PORT}`));
 
 // ------------------------------------
 

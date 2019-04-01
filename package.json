@@ -19,6 +19,7 @@
   "homepage": "https://github.com/astro-paranoid/astroparanoid.com#readme",
   "dependencies": {
     "dotenv": "^7.0.0",
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "pg": "^7.9.0",
     "superagent": "^5.0.2"

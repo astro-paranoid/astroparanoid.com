@@ -1,0 +1,25 @@
+.nav-item{
+  display:inline-block;
+  padding:15px;
+}
+
+.app-title{
+}
+
+.nav-item:hover, .nav-item:active{
+  transform:scale(1.35);
+  color:rgb(56, 175, 72);
+}
+
+#app-title:hover, #app-title:active{
+  transform: scale(1.1);
+}
+
+.logo{
+  width:10vw;
+  min-width: 80px;
+  max-width:120px;
+  max-height:120px;
+  padding-right:1vw;
+}
+
