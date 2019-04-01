@@ -27,7 +27,7 @@ client.connect();
 client.on('error', err => console.error(err));
 
 // LISTEN ON PORT
-app.listen(PORT, () => console.log(`Astroparanoid listening on ${PORT}`));
+app.listen(PORT, () => console.log(`Astro-Paranoid listening on ${PORT}`));
 
 // ------------------------------------
 
