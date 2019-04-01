@@ -21,8 +21,13 @@ const PORT = process.env.PORT;
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
+//create client connection to database
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.on('error', err => console.error(err));
+
 // LISTEN ON PORT
-app.listen(PORT, () => console.log(`Book app listening on ${PORT}`));
+app.listen(PORT, () => console.log(`Astroparanoid listening on ${PORT}`));
 
 // ------------------------------------
 
@@ -32,6 +37,31 @@ app.get('/test', (req, res) => {
   res.render('pages/index');
 });
 
+//TODO: put in a route for the asteroidFromAPI function here
+
+//error handler for invalid endpoint
+app.use('*', (req, res) => res.send('Sorry, an asteroid hit this route and it no longer exists'));
+
+//Error handler for 500 error
+function handleError(err, res){
+  console.error(err);
+  if (res) res.status(500).send('You messed something up fix it before the asteroids get here');
+}
+
+//function to call down asteroids from API
+
+function asteroidFromAPI(request, response){
+  const asteroidUrl = `https://api.nasa.gov/neo/rest/v1/feed?start_date=2018-09-07&end_date=2018-09-08&api_key=${process.env.ASTEROID_API}`;
+
+  return superagent.get(asteroidUrl)
+    .then( asteroidResults => {
+      const asteroidList = asteroidResults.body.near_earth_objects.start_date.map((asteroidData)=>{
+        return new Asteroid(asteroidData);
+      });
+      response.send(asteroidList);
+    })
+    .catch(error => handleError(error))
+}
 
 //Asteroid constructor
 function Asteroid (asteroidData) {
@@ -41,4 +71,5 @@ function Asteroid (asteroidData) {
   this.estimated_diameter_min = asteroidData.estimated_diameter.feet.estimated_diameter_min;
   this.estimated_diameter_max = asteroidData.estimated_diameter.feet.estimated_diameter_max;
 }
+
 
