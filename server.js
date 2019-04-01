@@ -31,3 +31,14 @@ app.listen(PORT, () => console.log(`Book app listening on ${PORT}`));
 app.get('/test', (req, res) => {
   res.render('pages/index');
 });
+
+
+//Asteroid constructor
+function Asteroid (asteroidData) {
+  this.name = asteroidData.name;
+  this.is_potentially_hazardous_asteroid = asteroidData.is_potentially_hazardous_asteroid;
+  this.miss_distance = asteroidData.close_approach_data.miss_distance.miles;
+  this.estimated_diameter_min = asteroidData.estimated_diameter.feet.estimated_diameter_min;
+  this.estimated_diameter_max = asteroidData.estimated_diameter.feet.estimated_diameter_max;
+}
+
