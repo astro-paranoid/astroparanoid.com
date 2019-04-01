@@ -37,7 +37,9 @@ app.get('/test', (req, res) => {
   res.render('pages/index');
 });
 
-//TODO: put in a route for the asteroidFromAPI function here
+//TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
+
+//app.get('/asteroids', asteroidFromAPI);
 
 //error handler for invalid endpoint
 app.use('*', (req, res) => res.send('Sorry, an asteroid hit this route and it no longer exists'));
