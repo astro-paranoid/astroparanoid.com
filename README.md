@@ -1,13 +1,13 @@
 # astroparanoid.com
 Asteroid tracker to feed your paranoia. 
 
-#Project Authors:
+## Project Authors:
 Aliya Summers, Bonnie Wang, Jagdeep Singh, Jessica Zuchowski
 
-#Version:
+## Version:
 4/1/19 1.0.0
 
-#Problem Domain : start time: 1045
+## Problem Domain : start time: 1045
 User Stories
 As as a user, I want to be alerted about dangerous asteroids so that I can plan accordingly.
 As a citizen of Earth and and environmentalist, I want my government officials to take planetary dangers more seriously.
@@ -15,16 +15,16 @@ As a user, I want a clean UI that is easy to navigate.
 As a dev, I want to use APIs that clearly give the info needed. 
 As a dev, I want to use a database to store user locations and searches.
 
-#Libraries/Frameworks/Packages
+## Libraries/Frameworks/Packages
 superagent
 express
 postgres
 
-#APIs Used:
+## APIs Used:
 api.nasa.gov
 developers.google.com
 
-#Features:
+## Features:
 Feature Name: Readme
 Time Estimate: 20 minutes
 Start Date/Time: 1045
