@@ -10,17 +10,18 @@
   </header>
 
   <main id="content-wrapper">
-    <%//asteroid.forEach(asteroid =>{ %>
+    <%asteroids[0].forEach(asteroid =>{ %>
       <article class="asteroid-container">
-        <img src="" alt="" class="asteroid-image">
-          <div class="name-size">
+        <!-- <img src="" alt="" class="asteroid-image"> -->
+        <div class="name-size">
+          <h4><%= asteroid.name %></h4>
+          <h6>Size: <%= asteroid.diameter_feet_min.toFixed(2) %> - <%= asteroid.diameter_feet_max.toFixed(2) %> Feet</h6>
+        </div>
+        <div class="location-input">
 
-          </div>
-          <div class="location-input">
-
-          </div>
+        </div>
       </article>
-    <%//})%>   
+    <%})%>   
   </main>
 
   <footer>
