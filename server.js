@@ -28,4 +28,6 @@ app.listen(PORT, () => console.log(`Book app listening on ${PORT}`));
 
 // Route/endpoint handling
 
-app.get('/test', res.render('pages/index'));
+app.get('/test', (req, res) => {
+  res.render('pages/index');
+});
