@@ -33,45 +33,59 @@ app.listen(PORT, () => console.log(`Astro-Paranoid listening on ${PORT}`));
 
 // Route/endpoint handling
 
-app.get('/test', (req, res) => {
-  res.render('pages/index');
-});
+app.get('/', getAsteroidDataFromAPI);
 
 //TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
-
-//app.get('/asteroids', asteroidFromAPI);
 
 //error handler for invalid endpoint
 app.use('*', (req, res) => res.send('Sorry, an asteroid hit this route and it no longer exists'));
 
 //Error handler for 500 error
-function handleError(err, res){
+function handleError(err, res, errorMessage){
   console.error(err);
-  if (res) res.status(500).send('You messed something up fix it before the asteroids get here');
+  if (res) res.render('pages/error', {status : err.status, message : errorMessage});
 }
+
 
 //function to call down asteroids from API
 
-function asteroidFromAPI(request, response){
-  const asteroidUrl = `https://api.nasa.gov/neo/rest/v1/feed?start_date=2018-09-07&end_date=2018-09-08&api_key=${process.env.ASTEROID_API}`;
+function getAsteroidDataFromAPI(request, response){
+  console.log('entered function API data');
+  const asteroidUrl = `https://api.nasa.gov/neo/rest/v1/feed?api_key=${process.env.ASTEROID_API}`;
 
   return superagent.get(asteroidUrl)
     .then( asteroidResults => {
-      const asteroidList = asteroidResults.body.near_earth_objects.start_date.map((asteroidData)=>{
-        return new Asteroid(asteroidData);
+      console.log('got API data', asteroidResults);
+
+      const asteroidListForWeek = [];
+
+      Object.keys(asteroidResults.body.near_earth_objects).forEach((date) => {
+
+        let asteroidListForDay = [];
+
+        asteroidResults.body.near_earth_objects[date].forEach((asteroid) => {
+          asteroidListForDay.push(new Asteroid(asteroid));
+        });
+
+        asteroidListForWeek.push(asteroidListForDay);
       });
-      response.send(asteroidList);
+
+      response.render('pages/index', {asteroids: asteroidListForWeek});
     })
-    .catch(error => handleError(error))
+    .catch(error => handleError(error, response, 'Cannot connect to NASA asteroid API'));
 }
 
 //Asteroid constructor
 function Asteroid (asteroidData) {
+  this.neo_ref_id = asteroidData.neo_reference_id;
   this.name = asteroidData.name;
-  this.is_potentially_hazardous_asteroid = asteroidData.is_potentially_hazardous_asteroid;
-  this.miss_distance = asteroidData.close_approach_data.miss_distance.miles;
-  this.estimated_diameter_min = asteroidData.estimated_diameter.feet.estimated_diameter_min;
-  this.estimated_diameter_max = asteroidData.estimated_diameter.feet.estimated_diameter_max;
+  this.hazardous = asteroidData.is_potentially_hazardous_asteroid;
+  this.miss_distance_miles = asteroidData.close_approach_data[0].miss_distance.miles;
+  this.diameter_feet_min = asteroidData.estimated_diameter.feet.estimated_diameter_min;
+  this.diameter_feet_max = asteroidData.estimated_diameter.feet.estimated_diameter_max;
+  this.velocity_mph = asteroidData.close_approach_data[0].relative_velocity.miles_per_hour;
+  this.sentry_object = asteroidData.is_sentry_object;
+  this.closest_date = asteroidData.close_approach_data[0].close_approach_date;
 }
 
 
