@@ -1,0 +1,26 @@
+{
+  "name": "astroparanoid.com",
+  "version": "1.0.0",
+  "description": "Asteroid Tracking and Alert Website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astro-paranoid/astroparanoid.com.git"
+  },
+  "author": "Jagdeep Singh, Bonnie Wang, Aliya Summers and Jessica Zuchowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/astro-paranoid/astroparanoid.com/issues"
+  },
+  "homepage": "https://github.com/astro-paranoid/astroparanoid.com#readme",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "pg": "^7.9.0",
+    "superagent": "^5.0.2"
+  }
+}
