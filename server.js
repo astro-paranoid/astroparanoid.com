@@ -40,6 +40,8 @@ app.get('/map', (request, response) => {
   response.render('pages/location');
 });
 
+app.get('/location/:id', getAsteroidComparison)
+
 //TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
 
 //error handler for invalid endpoint
@@ -115,31 +117,15 @@ function getAsteroidDataFromAPI(request, response) {
     .catch(error => handleError(error));
 }
 
-/**
- * Adds asteroid to SQL database, asteroids table.
- *
- * @param {object} asteroid Asteroid object
- */
-function addAsteroidToDatabase(asteroid) {
-  const selectSQL = `SELECT * FROM asteroids WHERE neo_ref_id=$1 AND closest_date=$2`;
-  const selectValues = [asteroid.neo_ref_id, asteroid.closest_date];
+function getAsteroidComparison(request, response){
+  let sql = `SELECT * FROM asteroids WHERE id=$1;`;
+  let values = [request.params.id];
 
-  client.query(selectSQL, selectValues)
-    .then(selectReturn => {
-      if (!selectReturn.rowCount) {
-        const insertSQL = `INSERT INTO asteroids (neo_ref_id, name, hazardous, miss_distance_miles, diameter_feet_min, diameter_feet_max, velocity_mph, sentry_object, closest_date, img) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;`;
-        const insertValues = Object.values(asteroid).slice(0,10);
-
-        client.query(insertSQL, insertValues)
-          .then(insertReturn => {
-            return insertReturn.rows[0].id;
-          })
-          .catch(error => handleError(error));
-      } else {
-        selectReturn.rows[0].id;
-      }
+  return client.query(sql,values)
+    .then(result => {
+      return response.render('./pages/location',{asteroid: result.rows[0]});
     })
-    .catch(error => handleError(error));
+    .catch(error => handleError(error, response));
 }
 
 //Asteroid constructor

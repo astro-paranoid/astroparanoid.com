@@ -9,9 +9,10 @@
     <%- include('../layout/header')%>
   </header>
   <main id="content-wrapper">
+    <h2 id="date">Asteroids on <%= Date(asteroidsForDay.asteroids[0].closest_date).slice(0,15) %></h2>
     <%asteroidList.asteroids.forEach((asteroid) => { %>
-      <article class="asteroid-container">
-
+      <a href="/location/<%asteroid.id%>">
+        <article class="asteroid-container">
         <img src="<%= asteroid.img%>" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: <%=Math.floor((asteroid.diameter_feet_max/asteroidList.maxSize) * 75)%>%">
 
         <div class="name-size">
@@ -30,6 +31,7 @@
           </form>
         </div> -->
       </article>
+    </a>
     <%})%>   
   </main>
 
