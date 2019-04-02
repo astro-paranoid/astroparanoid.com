@@ -16,10 +16,16 @@
         <div class="name-size">
           <h4><%= asteroid.name %></h4>
           <h6>Size: <%= asteroid.diameter_feet_min.toFixed(2) %> - <%= asteroid.diameter_feet_max.toFixed(2) %> Feet</h6>
+          <h6></h6>
         </div>
         <div class="location-input">
-
-        </div>
+          <form action="/location" method="post">
+            <input type="text" name="search" placeholder="Enter a City" required>
+            <fieldset>
+              <label for ="map">
+                <button type="submit">Search for City</button>
+            </fieldset>
+          </form>
       </article>
     <%})%>   
   </main>
