@@ -9,7 +9,7 @@
     <%- include('../layout/header')%>
   </header>
   <main id="content-wrapper">
-    <h2 id="date">Asteroids on <%= Date(asteroidsForDay.asteroids[0].closest_date).slice(0,15) %></h2>
+    <h2 id="date">Asteroids on <%= asteroidList.asteroids[0].closest_date %></h2>
     <%asteroidList.asteroids.forEach((asteroid) => { %>
       <a href="/location/<%asteroid.id%>">
         <article class="asteroid-container">

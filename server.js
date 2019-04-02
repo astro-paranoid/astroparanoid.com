@@ -84,10 +84,7 @@ function getAsteroidDataFromAPI(request, response) {
                 const insertValues = Object.values(asteroidObj).slice(0,10);
 
                 client.query(insertSQL, insertValues)
-                  .then(insertReturn => {
-                    console.log(insertReturn);
-                    asteroidObj.id = insertReturn.rows[0].id;
-                  })
+                  .then(insertReturn => asteroidObj.id = insertReturn.rows[0].id)
                   .catch(error => handleError(error));
 
                 asteroidListForDay.push(asteroidObj);
