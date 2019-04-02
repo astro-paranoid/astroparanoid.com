@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS asteroids;
+DROP TABLE IF EXISTS daily_max_size;
 
 CREATE TABLE asteroids (
   id SERIAL PRIMARY KEY,
@@ -10,5 +11,12 @@ CREATE TABLE asteroids (
   diameter_feet_max NUMERIC(20,10),
   velocity_mph NUMERIC(20,10),
   sentry_object BOOLEAN,
-  closest_date VARCHAR(255)
+  closest_date VARCHAR(20),
+  img VARCHAR(255)
+);
+
+CREATE TABLE daily_max_size (
+  id SERIAL PRIMARY KEY,
+  date VARCHAR(20),
+  size NUMERIC (20,10)
 );

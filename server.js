@@ -56,29 +56,65 @@ function handleError(err, res, errorMessage){
 
 //function to call down asteroids from API
 
-function getAsteroidDataFromAPI(request, response){
-  const asteroidUrl = `https://api.nasa.gov/neo/rest/v1/feed?api_key=${process.env.ASTEROID_API}`;
+function getAsteroidDataFromAPI(request, response) {
 
-  return superagent.get(asteroidUrl)
-    .then( asteroidResults => {
+  const selectSQL = `SELECT * FROM asteroids WHERE closest_date=$1`;
+  const selectValues = [getTodayDate()];
 
-      const asteroidListForWeek = [];
+  client.query(selectSQL, selectValues)
+    .then(selectReturn => {
+      if (!selectReturn.rowCount) {
+        const asteroidUrl = `https://api.nasa.gov/neo/rest/v1/feed?api_key=${process.env.ASTEROID_API}`;
 
-      Object.keys(asteroidResults.body.near_earth_objects).forEach((date) => {
+        return superagent.get(asteroidUrl)
+          .then( asteroidResults => {
+            const asteroidListForWeek = [];
 
-        let asteroidListForDay = [];
-        let max = 0;
-        asteroidResults.body.near_earth_objects[date].forEach((asteroid) => {
-          let asteroidObj = new Asteroid(asteroid);
-          max = (asteroidObj.diameter_feet_max > max) ? asteroidObj.diameter_feet_max : max;
-          asteroidListForDay.push(asteroidObj);
-        });
-        asteroidListForWeek.push({ asteroids: asteroidListForDay, maxSize: max});
-      });
+            Object.keys(asteroidResults.body.near_earth_objects).forEach((date) => {
 
-      response.render('pages/index', {asteroidsForDay: asteroidListForWeek[0]});
+              let asteroidListForDay = [];
+              let max = 0;
+              asteroidResults.body.near_earth_objects[date].forEach((asteroid, idx) => {
+                let asteroidObj = new Asteroid(asteroid);
+                max = (asteroidObj.diameter_feet_max > max) ? asteroidObj.diameter_feet_max : max;
+                asteroidObj.img = `/images/asteroid${idx%8}.png`;
+                // insert obj into database
+
+                const insertSQL = `INSERT INTO asteroids (neo_ref_id, name, hazardous, miss_distance_miles, diameter_feet_min, diameter_feet_max, velocity_mph, sentry_object, closest_date, img) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;`;
+                const insertValues = Object.values(asteroidObj).slice(0,10);
+
+                client.query(insertSQL, insertValues)
+                  .then(insertReturn => {
+                    console.log(insertReturn);
+                    asteroidObj.id = insertReturn.rows[0].id;
+                  })
+                  .catch(error => handleError(error));
+
+                asteroidListForDay.push(asteroidObj);
+              });
+
+              // TODO: add max to table
+              const maxInsert = `INSERT INTO daily_max_size (date, size) VALUES ($1, $2);`;
+              const maxValues = [date, max];
+              client.query(maxInsert, maxValues).catch(error => handleError(error));
+
+              asteroidListForWeek.push({ asteroids: asteroidListForDay, maxSize: max });
+            });
+
+            response.render('pages/index', {asteroidList: asteroidListForWeek[0]});
+          })
+          .catch(error => handleError(error, response, 'Cannot connect to NASA asteroid API'));
+      } else {
+        const maxSelect = `SELECT size FROM daily_max_size WHERE date=$1`;
+        const maxValues = [getTodayDate()];
+        client.query(maxSelect, maxValues)
+          .then(maxSelectReturn => {
+            response.render('pages/index', {asteroidList: {asteroids : selectReturn.rows, maxSize: maxSelectReturn.rows[0].size}})
+          })
+          .catch();
+      }
     })
-    .catch(error => handleError(error, response, 'Cannot connect to NASA asteroid API'));
+    .catch(error => handleError(error));
 }
 
 function getAsteroidComparison(request, response){
@@ -102,7 +138,13 @@ function Asteroid (asteroidData) {
   this.diameter_feet_max = asteroidData.estimated_diameter.feet.estimated_diameter_max;
   this.velocity_mph = asteroidData.close_approach_data[0].relative_velocity.miles_per_hour;
   this.sentry_object = asteroidData.is_sentry_object;
-  this.closest_date = asteroidData.close_approach_data[0].close_approach_date;
+  this.closest_date = (asteroidData.close_approach_data[0].close_approach_date);
 }
 
-
+// today's date in YYYY-MM-DD format
+function getTodayDate() {
+  let d = new Date();
+  let day = d.getDay();
+  let month = d.getMonth() + 1;
+  return `${d.getFullYear()}-${(month < 10) ? '0'+month: month}-${(day < 10) ? '0'+day:day}`;
+}

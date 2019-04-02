@@ -10,16 +10,15 @@
   </header>
   <main id="content-wrapper">
     <h2 id="date">Asteroids on <%= Date(asteroidsForDay.asteroids[0].closest_date).slice(0,15) %></h2>
-    <%asteroidsForDay.asteroids.forEach((asteroid, idx) => { %>
+    <%asteroidList.asteroids.forEach((asteroid) => { %>
       <a href="/location/<%asteroid.id%>">
         <article class="asteroid-container">
-
-        <img src="/images/asteroid<%=idx%8%>.png" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: <%=Math.floor((asteroid.diameter_feet_max/asteroidsForDay.maxSize) * 75)%>%">
+        <img src="<%= asteroid.img%>" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: <%=Math.floor((asteroid.diameter_feet_max/asteroidList.maxSize) * 75)%>%">
 
         <div class="name-size">
           <h4>Name: <%= asteroid.name %></h4>
-          <h6>Size: <%= asteroid.diameter_feet_min.toFixed(2) %> - <%= asteroid.diameter_feet_max.toFixed(2) %> feet</h6>
-          <h6>Will miss Earth by: <%= asteroid.miss_distance_miles %> miles</h6>
+          <h6>Size: <%= Number(asteroid.diameter_feet_min).toFixed(2) %> - <%= Number(asteroid.diameter_feet_max).toFixed(2) %> feet</h6>
+          <h6>Will miss Earth by: <%= Number(asteroid.miss_distance_miles).toFixed(2) %> miles</h6>
         </div>
 
         <!-- <div class="location-input">
