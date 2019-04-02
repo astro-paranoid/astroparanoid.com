@@ -6,8 +6,15 @@
 .app-title{
 }
 
-#app-title:hover, #app-title:active{
-  transform: scale(1.1);
+
+.nav-item:hover, .nav-item:active{
+  transform:scale(1.35);
+  color:rgb(56, 175, 72);
+}
+
+header:hover, header:active{
+  transform: scale(1.08);
+
 }
 
 .logo{
@@ -16,6 +23,8 @@
   max-width:120px;
   max-height:120px;
   padding-right:1vw;
+  margin-top:10px;
+  float:left;
 }
 
 .nav-item-button {

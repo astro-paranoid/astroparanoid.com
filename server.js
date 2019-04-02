@@ -35,6 +35,11 @@ app.listen(PORT, () => console.log(`Astro-Paranoid listening on ${PORT}`));
 
 app.get('/', getAsteroidDataFromAPI);
 
+//route to page with map
+app.get('/map', (request, response) => {
+  response.render('pages/location');
+});
+
 //TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
 
 //error handler for invalid endpoint
@@ -54,6 +59,7 @@ function getAsteroidDataFromAPI(request, response){
 
   return superagent.get(asteroidUrl)
     .then( asteroidResults => {
+
       const asteroidListForWeek = [];
 
       Object.keys(asteroidResults.body.near_earth_objects).forEach((date) => {

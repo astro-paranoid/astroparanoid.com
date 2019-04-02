@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../layout/head') %>
+  <title>Astro-Paranoid</title>
+</head>
+<body>
+  <header>
+    <%- include('../layout/header')%>
+  </header>
+
+  <main id="content-wrapper">
+      <article class="asteroid-container">
+        <img src="" alt="" class="asteroid-image">
+        <div id="map">
+            <iframe width="600" height="450" frameborder="0" style="border:0"
+            src=<%=`https://www.google.com/maps/embed/v1/place?q=seattle&key=${process.env.GOOGLE_MAPS_API}`%> allowfullscreen></iframe>
+          </div>
+      </article>
+    <%//})%>   
+  </main>
+
+  <footer>
+    <%- include('../layout/footer')%>
+  </footer>
+</body>
+</html>
+
