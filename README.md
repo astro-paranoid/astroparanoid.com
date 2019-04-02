@@ -49,10 +49,18 @@ Total Time: 20 minutes
 Driver/Navigator: Jess/Aliya
 
 ## Feature:
-Feature Name: map search variable
-Time Estimate: 20 minutes
+Feature Name: Google map search form/ map render
+Time Estimate: 40 minutes
 Start Date/Time: 1633
 End Date/Time: (stopped at 1700 for end of day check-in)
+Total Time: put on hold
+Driver/Navigator: 4/1: Jess/Aliya - 4/2: Aliya/Jess
+
+## Feature:
+Feature Name: Map overlay
+Time Estimate: 1 hour
+Start Date/Time: 1220
+End Date/Time: 
 Total Time: 
 Driver/Navigator: Jess/Aliya
 

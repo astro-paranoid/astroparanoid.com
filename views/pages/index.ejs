@@ -21,15 +21,15 @@
           <h6>Will miss Earth by: <%= Number(asteroid.miss_distance_miles).toFixed(2) %> miles</h6>
         </div>
 
-        <!-- <div class="location-input">
-          <form action="/location" method="post">
-            <input type="text" name="search" placeholder="Enter a City" required>
+        <div class="location-input">
+          <form action="/location" method="get">
+            <!-- <input type="text" name="search" placeholder="Enter a City" required> -->
             <fieldset>
               <label for ="map">
-                <button type="submit">Search for City</button>
+                <button type="submit">View Damage to Seattle</button>
             </fieldset>
           </form>
-        </div> -->
+        </div>
       </article>
     </a>
     <%})%>   
