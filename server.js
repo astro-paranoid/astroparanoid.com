@@ -36,7 +36,7 @@ app.listen(PORT, () => console.log(`Astro-Paranoid listening on ${PORT}`));
 app.get('/', getAsteroidDataFromAPI);
 
 //route to page with map
-app.post('/location', (request, response) => {
+app.get('/location', (request, response) => {
   response.render('pages/location');
 });
 
