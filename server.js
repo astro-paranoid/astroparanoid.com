@@ -35,12 +35,15 @@ app.listen(PORT, () => console.log(`Astro-Paranoid listening on ${PORT}`));
 
 app.get('/', getAsteroidDataFromAPI);
 
-//route to page with map
-app.get('/map', (request, response) => {
+//TODO: comment out when route with function complete
+
+app.post('/location', (request, response) => {
   response.render('pages/location');
 });
 
-//TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
+//app.post('/location', getLocation);
+
+//filter out null results
 
 //error handler for invalid endpoint
 app.use('*', (req, res) => res.send('Sorry, an asteroid hit this route and it no longer exists'));
@@ -78,6 +81,28 @@ function getAsteroidDataFromAPI(request, response){
     .catch(error => handleError(error, response, 'Cannot connect to NASA asteroid API'));
 }
 
+
+
+// function getLocation(request, response){
+//   console.log('you have hit the beginning of the location function');
+//   const url=`https://www.google.com/maps/embed/v1/search?q=${request.query.data}&key=${process.env.GOOGLE_MAPS_API}`;
+//   console.log('========= URL AT 88', url)
+//   superagent.get(url)
+//   //  .then(apiResponse => apiResponse.body)
+//     .then(results=>{
+//       console.log('==========results at 92', results)
+//       response.render('pages/location', {searchResults: results});
+//     })
+
+//     .catch(error => handleError(error, response));
+// }
+
+
+// function Location(query, location){
+//   this.search_query = query;
+// }
+
+
 //Asteroid constructor
 function Asteroid (asteroidData) {
   this.neo_ref_id = asteroidData.neo_reference_id;
@@ -90,5 +115,3 @@ function Asteroid (asteroidData) {
   this.sentry_object = asteroidData.is_sentry_object;
   this.closest_date = asteroidData.close_approach_data[0].close_approach_date;
 }
-
-

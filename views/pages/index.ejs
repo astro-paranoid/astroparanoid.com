@@ -18,8 +18,8 @@
           <h6>Size: <%= asteroid.diameter_feet_min.toFixed(2) %> - <%= asteroid.diameter_feet_max.toFixed(2) %> Feet</h6>
           <h6></h6>
         </div>
-        <div class="location-input">
-          <form action="/location" method="post">
+        <div class="location-input" id="search-form">
+          <form action="location" method="post">
             <input type="text" name="search" placeholder="Enter a City" required>
             <fieldset>
               <label for ="map">
@@ -30,6 +30,9 @@
     <%})%>   
   </main>
 
+  <div>
+      <%- include('../layout/javascriptandjquery')%>
+      </div>
   <footer>
     <%- include('../layout/footer')%>
   </footer>

@@ -49,10 +49,10 @@ Total Time: 20 minutes
 Driver/Navigator: Jess/Aliya
 
 ## Feature:
-Feature Name: map search variable
-Time Estimate: 20 minutes
+Feature Name: map search form and url
+Time Estimate: 40 minutes
 Start Date/Time: 1633
-End Date/Time: (stopped at 1700 for end of day check-in)
+End Date/Time: (stopped at 1700 for end of day check-in, planning), resume at 9:18 4/2
 Total Time: 
 Driver/Navigator: Jess/Aliya
 
