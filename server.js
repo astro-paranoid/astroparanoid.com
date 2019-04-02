@@ -37,7 +37,7 @@ app.get('/', getAsteroidDataFromAPI);
 
 //route to page with map
 app.get('/location', (request, response) => {
-  response.render('pages/location');
+  response.render('./pages/location');
 });
 
 //TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
