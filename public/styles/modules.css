@@ -28,7 +28,7 @@
 
 .asteroid-image:hover {
   transform: scale(1.05);
-  filter: brightness(0.5) sepia(1) saturate(10000%);
+  filter: brightness(0.5) sepia(1) saturate(10000%) hue-rotate(180deg);
 }
 
 .name-size {
@@ -41,6 +41,10 @@
 
 .asteroid-image {
   margin: 20px 0;
+}
+
+.asteroid-link {
+  text-decoration: none;
 }
 
 .asteroid-container {

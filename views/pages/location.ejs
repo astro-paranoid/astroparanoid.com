@@ -11,13 +11,21 @@
 
   <main id="content-wrapper">
       <article class="asteroid-container">
-        <img src="" alt="" class="asteroid-image">
-        <div id="map">
-            <iframe width="600" height="450" frameborder="0" style="border:0"
-            src=<%=`https://www.google.com/maps/embed/v1/place?q=seattle&key=${process.env.GOOGLE_MAPS_API}`%> allowfullscreen></iframe>
-          </div>
+        <img src="<%= asteroid.img %>" alt="" class="asteroid-image">
+        
       </article>
-    <%//})%>   
+
+      <div id="map">
+        <iframe width="600" height="450" frameborder="0" style="border:0"
+        src=<%=`https://www.google.com/maps/embed/v1/place?q=seattle&key=${process.env.GOOGLE_MAPS_API}`%> allowfullscreen></iframe>
+      </div>
+
+      <section>
+
+      </section>
+      <section id="asteroid-stats">
+        
+      </section>
   </main>
 
   <footer>
