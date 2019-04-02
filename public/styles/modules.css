@@ -6,6 +6,7 @@
 .app-title{
 }
 
+
 .nav-item:hover, .nav-item:active{
   transform:scale(1.35);
   color:rgb(56, 175, 72);
@@ -13,6 +14,7 @@
 
 header:hover, header:active{
   transform: scale(1.08);
+
 }
 
 .logo{
@@ -25,3 +27,13 @@ header:hover, header:active{
   float:left;
 }
 
+.nav-item-button {
+  background: none;
+  border: none;
+  color: white;
+}
+
+.nav-item-button:hover, .nav-item-button:active {
+  transform:scale(1.35);
+  color:rgb(56, 175, 72);
+}
