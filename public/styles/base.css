@@ -1,13 +1,19 @@
+
+ @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+ @import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
 body{
   background-color:black;
   color:white;
   text-align: center;
+  font-family: 'Comfortaa', cursive;
 }
 
 h1{
   font-size:35pt;
   padding:20px 0;
+  font-family:'Source Code Pro', monospace;
 }
-a:visited {
+a:visited, a:link {
   color: white;
 }

@@ -9,10 +9,12 @@
     <%- include('../layout/header')%>
   </header>
   <main id="content-wrapper">
-    <%asteroidsWeekList[0].asteroids.forEach((asteroid, idx) => { %>
-      <article class="asteroid-container">
+    <h2 id="date">Asteroids on <%= Date(asteroidsForDay.asteroids[0].closest_date).slice(0,15) %></h2>
+    <%asteroidsForDay.asteroids.forEach((asteroid, idx) => { %>
+      <a href="/location/<%asteroid.id%>">
+        <article class="asteroid-container">
 
-        <img src="/images/asteroid<%=idx%8%>.png" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: <%=Math.floor((asteroid.diameter_feet_max/asteroidsWeekList[0].maxSize) * 75)%>%">
+        <img src="/images/asteroid<%=idx%8%>.png" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: <%=Math.floor((asteroid.diameter_feet_max/asteroidsForDay.maxSize) * 75)%>%">
 
         <div class="name-size">
           <h4>Name: <%= asteroid.name %></h4>
@@ -30,6 +32,7 @@
           </form>
         </div> -->
       </article>
+    </a>
     <%})%>   
   </main>
 
