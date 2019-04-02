@@ -11,15 +11,22 @@
   <p>Hello</p>
 
   <main id="content-wrapper">
-      
-      
-        <div id="map" style="height: 425px"></div>
-        <script src="./js/app.js"></script>
-        <script async defer src="<%= `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&callback=initMap` %>"></script>
-          
-           
+      <article class="asteroid-container">
+        <img src="<%= asteroid.img %>" alt="" class="asteroid-image">
+        
       </article>
-    
+
+      <div id="map" style="height: 425px"></div>
+      <script src="./js/app.js"></script>
+      <script async defer src="<%= `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&callback=initMap` %>"></script>
+
+
+      <section id="city-stats">
+
+      </section>
+      <section id="asteroid-stats">
+        
+      </section>
   </main>
 
   <footer>
