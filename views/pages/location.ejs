@@ -12,21 +12,9 @@
   <main id="content-wrapper">
       <article class="asteroid-container">
         <img src="" alt="" class="asteroid-image">
-          <div class="name-size">
-            <div id="map"><iframe width="600" height="450" frameborder="0" style="border:0"
-              src=<%=`https://www.google.com/maps/embed/v1/place?q=seattle&key=${process.env.GOOGLE_MAPS_API}`%> allowfullscreen></iframe></div>
-              <div>
-                <form action="/location" method="post">
-                  <input type="text" name="search" placeholder="Enter a City" required>
-                  <fieldset>
-                    <label for ="map">
-                      <button type="submit">Search for City</button>
-                  </fieldset>
-                </form>
-              </div>
-          </div>
-          <div class="location-input">
-
+        <div id="map">
+            <iframe width="600" height="450" frameborder="0" style="border:0"
+            src=<%=`https://www.google.com/maps/embed/v1/place?q=seattle&key=${process.env.GOOGLE_MAPS_API}`%> allowfullscreen></iframe>
           </div>
       </article>
     <%//})%>   
