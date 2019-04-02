@@ -54,29 +54,84 @@ function handleError(err, res, errorMessage){
 
 //function to call down asteroids from API
 
-function getAsteroidDataFromAPI(request, response){
-  const asteroidUrl = `https://api.nasa.gov/neo/rest/v1/feed?api_key=${process.env.ASTEROID_API}`;
+function getAsteroidDataFromAPI(request, response) {
 
-  return superagent.get(asteroidUrl)
-    .then( asteroidResults => {
+  const selectSQL = `SELECT * FROM asteroids WHERE closest_date=$1`;
+  const selectValues = [getTodayDate()];
 
-      const asteroidListForWeek = [];
+  client.query(selectSQL, selectValues)
+    .then(selectReturn => {
+      if (!selectReturn.rowCount) {
+        const asteroidUrl = `https://api.nasa.gov/neo/rest/v1/feed?api_key=${process.env.ASTEROID_API}`;
 
-      Object.keys(asteroidResults.body.near_earth_objects).forEach((date) => {
+        return superagent.get(asteroidUrl)
+          .then( asteroidResults => {
+            const asteroidListForWeek = [];
 
-        let asteroidListForDay = [];
-        let max = 0;
-        asteroidResults.body.near_earth_objects[date].forEach((asteroid) => {
-          let asteroidObj = new Asteroid(asteroid);
-          max = (asteroidObj.diameter_feet_max > max) ? asteroidObj.diameter_feet_max : max;
-          asteroidListForDay.push(asteroidObj);
-        });
-        asteroidListForWeek.push({ asteroids: asteroidListForDay, maxSize: max});
-      });
+            Object.keys(asteroidResults.body.near_earth_objects).forEach((date) => {
 
-      response.render('pages/index', {asteroidsWeekList: asteroidListForWeek});
+              let asteroidListForDay = [];
+              let max = 0;
+              asteroidResults.body.near_earth_objects[date].forEach((asteroid) => {
+                let asteroidObj = new Asteroid(asteroid);
+                max = (asteroidObj.diameter_feet_max > max) ? asteroidObj.diameter_feet_max : max;
+
+                // insert obj into database
+                addAsteroidToDatabase(asteroidObj);
+
+                asteroidListForDay.push(asteroidObj);
+              });
+
+              // TODO: add max to table
+              const maxInsert = `INSERT INTO daily_max_size (date, size) VALUES ($1, $2);`;
+              const maxValues = [date, max];
+              client.query(maxInsert, maxValues).catch(error => handleError(error));
+
+              asteroidListForWeek.push({ asteroids: asteroidListForDay, maxSize: max });
+            });
+
+            response.render('pages/index', {asteroidList: asteroidListForWeek[0]});
+          })
+          .catch(error => handleError(error, response, 'Cannot connect to NASA asteroid API'));
+      } else {
+        const maxSelect = `SELECT size FROM daily_max_size WHERE date=$1`;
+        const maxValues = [getTodayDate()];
+        client.query(maxSelect, maxValues)
+          .then(maxSelectReturn => {
+            console.log(selectReturn);
+            response.render('pages/index', {asteroidList: {asteroids : selectReturn.rows, maxSize: maxSelectReturn.rows[0].size}})
+          })
+          .catch();
+      }
     })
-    .catch(error => handleError(error, response, 'Cannot connect to NASA asteroid API'));
+    .catch(error => handleError(error));
+}
+
+/**
+ * Adds asteroid to SQL database, asteroids table.
+ *
+ * @param {object} asteroid Asteroid object
+ */
+function addAsteroidToDatabase(asteroid) {
+  const selectSQL = `SELECT * FROM asteroids WHERE neo_ref_id=$1 AND closest_date=$2`;
+  const selectValues = [asteroid.neo_ref_id, asteroid.closest_date];
+
+  client.query(selectSQL, selectValues)
+    .then(selectReturn => {
+      if (!selectReturn.rowCount) {
+        const insertSQL = `INSERT INTO asteroids (neo_ref_id, name, hazardous, miss_distance_miles, diameter_feet_min, diameter_feet_max, velocity_mph, sentry_object, closest_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id;`;
+        const insertValues = Object.values(asteroid).slice(0,9);
+
+        client.query(insertSQL, insertValues)
+          .then(insertReturn => {
+            return insertReturn.rows[0].id;
+          })
+          .catch(error => handleError(error));
+      } else {
+        selectReturn.rows[0].id;
+      }
+    })
+    .catch(error => handleError(error));
 }
 
 //Asteroid constructor
@@ -89,7 +144,13 @@ function Asteroid (asteroidData) {
   this.diameter_feet_max = asteroidData.estimated_diameter.feet.estimated_diameter_max;
   this.velocity_mph = asteroidData.close_approach_data[0].relative_velocity.miles_per_hour;
   this.sentry_object = asteroidData.is_sentry_object;
-  this.closest_date = asteroidData.close_approach_data[0].close_approach_date;
+  this.closest_date = (asteroidData.close_approach_data[0].close_approach_date);
 }
 
-
+// today's date in YYYY-MM-DD format
+function getTodayDate() {
+  let d = new Date();
+  let day = d.getDay();
+  let month = d.getMonth() + 1;
+  return `${d.getFullYear()}-${(month < 10) ? '0'+month: month}-${(day < 10) ? '0'+day:day}`;
+}
