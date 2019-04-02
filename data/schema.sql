@@ -11,7 +11,8 @@ CREATE TABLE asteroids (
   diameter_feet_max NUMERIC(20,10),
   velocity_mph NUMERIC(20,10),
   sentry_object BOOLEAN,
-  closest_date VARCHAR(20)
+  closest_date VARCHAR(20),
+  img VARCHAR(255)
 );
 
 CREATE TABLE daily_max_size (

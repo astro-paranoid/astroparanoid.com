@@ -72,12 +72,21 @@ function getAsteroidDataFromAPI(request, response) {
 
               let asteroidListForDay = [];
               let max = 0;
-              asteroidResults.body.near_earth_objects[date].forEach((asteroid) => {
+              asteroidResults.body.near_earth_objects[date].forEach((asteroid, idx) => {
                 let asteroidObj = new Asteroid(asteroid);
                 max = (asteroidObj.diameter_feet_max > max) ? asteroidObj.diameter_feet_max : max;
-
+                asteroidObj.img = `/images/asteroid${idx%8}.png`;
                 // insert obj into database
-                addAsteroidToDatabase(asteroidObj);
+
+                const insertSQL = `INSERT INTO asteroids (neo_ref_id, name, hazardous, miss_distance_miles, diameter_feet_min, diameter_feet_max, velocity_mph, sentry_object, closest_date, img) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;`;
+                const insertValues = Object.values(asteroidObj).slice(0,10);
+
+                client.query(insertSQL, insertValues)
+                  .then(insertReturn => {
+                    console.log(insertReturn);
+                    asteroidObj.id = insertReturn.rows[0].id;
+                  })
+                  .catch(error => handleError(error));
 
                 asteroidListForDay.push(asteroidObj);
               });
@@ -98,7 +107,6 @@ function getAsteroidDataFromAPI(request, response) {
         const maxValues = [getTodayDate()];
         client.query(maxSelect, maxValues)
           .then(maxSelectReturn => {
-            console.log(selectReturn);
             response.render('pages/index', {asteroidList: {asteroids : selectReturn.rows, maxSize: maxSelectReturn.rows[0].size}})
           })
           .catch();
@@ -119,8 +127,8 @@ function addAsteroidToDatabase(asteroid) {
   client.query(selectSQL, selectValues)
     .then(selectReturn => {
       if (!selectReturn.rowCount) {
-        const insertSQL = `INSERT INTO asteroids (neo_ref_id, name, hazardous, miss_distance_miles, diameter_feet_min, diameter_feet_max, velocity_mph, sentry_object, closest_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id;`;
-        const insertValues = Object.values(asteroid).slice(0,9);
+        const insertSQL = `INSERT INTO asteroids (neo_ref_id, name, hazardous, miss_distance_miles, diameter_feet_min, diameter_feet_max, velocity_mph, sentry_object, closest_date, img) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;`;
+        const insertValues = Object.values(asteroid).slice(0,10);
 
         client.query(insertSQL, insertValues)
           .then(insertReturn => {
