@@ -40,6 +40,8 @@ app.get('/map', (request, response) => {
   response.render('pages/location');
 });
 
+app.get('/location/:id', getAsteroidComparison)
+
 //TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
 
 //error handler for invalid endpoint
@@ -74,9 +76,20 @@ function getAsteroidDataFromAPI(request, response){
         asteroidListForWeek.push({ asteroids: asteroidListForDay, maxSize: max});
       });
 
-      response.render('pages/index', {asteroidsWeekList: asteroidListForWeek});
+      response.render('pages/index', {asteroidsForDay: asteroidListForWeek[0]});
     })
     .catch(error => handleError(error, response, 'Cannot connect to NASA asteroid API'));
+}
+
+function getAsteroidComparison(request, response){
+  let sql = `SELECT * FROM asteroids WHERE id=$1;`;
+  let values = [request.params.id];
+
+  return client.query(sql,values)
+    .then(result => {
+      return response.render('./pages/location',{asteroid: result.rows[0]});
+    })
+    .catch(error => handleError(error, response));
 }
 
 //Asteroid constructor
