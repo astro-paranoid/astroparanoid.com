@@ -6,11 +6,6 @@
 .app-title{
 }
 
-.nav-item:hover, .nav-item:active{
-  transform:scale(1.35);
-  color:rgb(56, 175, 72);
-}
-
 #app-title:hover, #app-title:active{
   transform: scale(1.1);
 }
@@ -23,3 +18,13 @@
   padding-right:1vw;
 }
 
+.nav-item-button {
+  background: none;
+  border: none;
+  color: white;
+}
+
+.nav-item-button:hover, .nav-item-button:active {
+  transform:scale(1.35);
+  color:rgb(56, 175, 72);
+}
