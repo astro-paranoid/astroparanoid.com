@@ -55,12 +55,10 @@ function handleError(err, res, errorMessage){
 //function to call down asteroids from API
 
 function getAsteroidDataFromAPI(request, response){
-  console.log('entered function API data');
   const asteroidUrl = `https://api.nasa.gov/neo/rest/v1/feed?api_key=${process.env.ASTEROID_API}`;
 
   return superagent.get(asteroidUrl)
     .then( asteroidResults => {
-      console.log('got API data', asteroidResults);
 
       const asteroidListForWeek = [];
 
