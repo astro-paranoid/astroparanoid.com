@@ -65,15 +65,16 @@ function getAsteroidDataFromAPI(request, response){
       Object.keys(asteroidResults.body.near_earth_objects).forEach((date) => {
 
         let asteroidListForDay = [];
-
+        let max = 0;
         asteroidResults.body.near_earth_objects[date].forEach((asteroid) => {
-          asteroidListForDay.push(new Asteroid(asteroid));
+          let asteroidObj = new Asteroid(asteroid);
+          max = (asteroidObj.diameter_feet_max > max) ? asteroidObj.diameter_feet_max : max;
+          asteroidListForDay.push(asteroidObj);
         });
-
-        asteroidListForWeek.push(asteroidListForDay);
+        asteroidListForWeek.push({ asteroids: asteroidListForDay, maxSize: max});
       });
 
-      response.render('pages/index', {asteroids: asteroidListForWeek});
+      response.render('pages/index', {asteroidsWeekList: asteroidListForWeek});
     })
     .catch(error => handleError(error, response, 'Cannot connect to NASA asteroid API'));
 }

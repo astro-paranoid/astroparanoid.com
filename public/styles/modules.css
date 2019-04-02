@@ -3,18 +3,8 @@
   padding:15px;
 }
 
-.app-title{
-}
-
-
-.nav-item:hover, .nav-item:active{
-  transform:scale(1.35);
-  color:rgb(56, 175, 72);
-}
-
-header:hover, header:active{
+#app-title:hover, #app-title:active{
   transform: scale(1.08);
-
 }
 
 .logo{
@@ -33,7 +23,24 @@ header:hover, header:active{
   color: white;
 }
 
-.nav-item-button:hover, .nav-item-button:active {
+.nav-item:hover, .nav-item:active {
   transform:scale(1.35);
-  color:rgb(56, 175, 72);
+}
+
+.asteroid-image:hover {
+  transform: scale(1.05);
+  filter: brightness(0.5) sepia(1) saturate(10000%);
+}
+
+.name-size {
+  margin: 10px 0 30px 0;
+}
+
+.asteroid-image {
+  margin: 20px 0;
+}
+
+.asteroid-container {
+  width: 90%;
+  margin: 50px auto;
 }

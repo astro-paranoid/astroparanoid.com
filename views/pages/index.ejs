@@ -8,17 +8,19 @@
   <header>
     <%- include('../layout/header')%>
   </header>
-
   <main id="content-wrapper">
-    <%asteroids[0].forEach(asteroid =>{ %>
+    <%asteroidsWeekList[0].asteroids.forEach((asteroid, idx) => { %>
       <article class="asteroid-container">
-        <!-- <img src="" alt="" class="asteroid-image"> -->
+
+        <img src="/images/asteroid<%=idx%8%>.png" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: <%=Math.floor((asteroid.diameter_feet_max/asteroidsWeekList[0].maxSize) * 75)%>%">
+
         <div class="name-size">
-          <h4><%= asteroid.name %></h4>
-          <h6>Size: <%= asteroid.diameter_feet_min.toFixed(2) %> - <%= asteroid.diameter_feet_max.toFixed(2) %> Feet</h6>
-          <h6></h6>
+          <h4>Name: <%= asteroid.name %></h4>
+          <h6>Size: <%= asteroid.diameter_feet_min.toFixed(2) %> - <%= asteroid.diameter_feet_max.toFixed(2) %> feet</h6>
+          <h6>Will miss Earth by: <%= asteroid.miss_distance_miles %> miles</h6>
         </div>
-        <div class="location-input">
+
+        <!-- <div class="location-input">
           <form action="/location" method="post">
             <input type="text" name="search" placeholder="Enter a City" required>
             <fieldset>
@@ -26,6 +28,7 @@
                 <button type="submit">Search for City</button>
             </fieldset>
           </form>
+        </div> -->
       </article>
     <%})%>   
   </main>

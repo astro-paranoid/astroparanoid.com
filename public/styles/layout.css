@@ -3,7 +3,7 @@ footer{
   bottom:0;
   right:0;
   left:0;
-  background-color:rgba(31, 29, 29, 0.74);
+  background-color:rgba(31, 29, 29, 0.95);
 }
 
 .fixed-nav > ul{
@@ -11,8 +11,21 @@ footer{
   justify-content: space-evenly;
 }
 
-header{
+#app-title{
   display:flex;
   justify-content:center;
   align-items: center;
+}
+
+#content-wrapper {
+  padding-bottom: 40vh;
+}
+
+#background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -1;
 }
