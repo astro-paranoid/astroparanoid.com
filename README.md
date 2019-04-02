@@ -24,7 +24,7 @@ postgres
 api.nasa.gov
 developers.google.com
 
-## Features:
+## Feature:
 Feature Name: Readme
 Time Estimate: 20 minutes
 Start Date/Time: 1045
@@ -32,7 +32,7 @@ End Date/Time: 1120 (took time for project pitch)
 Total Time: 20 minutes
 Driver/Navigator: Jess/Aliya
 
-## Features:
+## Feature:
 Feature Name: Database setup/ Asteroid constructor
 Time Estimate: 40 minutes
 Start Date/Time: 1130
@@ -40,11 +40,19 @@ End Date/Time: 1230 (including break)
 Total Time: 45 minutes
 Driver/Navigator: Aliya/Jess
 
-## Features:
+## Feature:
 Feature Name: Render map
 Time Estimate: 20 minutes
 Start Date/Time: 1605
-End Date/Time: 
+End Date/Time: 1625
+Total Time: 20 minutes
+Driver/Navigator: Jess/Aliya
+
+## Feature:
+Feature Name: map search variable
+Time Estimate: 20 minutes
+Start Date/Time: 1633
+End Date/Time: (stopped at 1700 for end of day check-in)
 Total Time: 
 Driver/Navigator: Jess/Aliya
 
