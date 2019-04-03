@@ -40,7 +40,7 @@ footer{
 /*styles for about page*/
 
 #about-wrapper{
-padding-bottom: 40vh;
+padding-bottom: 20vh;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -70,6 +70,11 @@ flex-direction: column;
   padding: 10px 10px;
   margin: 50px auto;
   flex-direction: row-reverse;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
 }
 
 

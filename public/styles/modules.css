@@ -137,9 +137,23 @@
 }
 
 /*styles for about page*/
+#about-wrapper div {
+  max-height: 125px;
+
+}
 
 
-#about-wrapper div img{
+
+.info-container p {
+  overflow: scroll;
+  padding-top: 1%;
+}
+
+.info-container h4 {
+  padding-bottom: 1%;
+}
+
+.info-container img{
  max-width: 100%;
  max-height: auto;
  min-width: 100px;
@@ -148,7 +162,7 @@
 
 @media only screen and (min-width: 600px){
 
-#about-wrapper div img{
+.info-container img{
   border: 1px black solid;
   border-radius: 50px;
   min-width: 100px;
