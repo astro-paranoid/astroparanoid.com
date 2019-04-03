@@ -199,3 +199,99 @@
 #location-wrapper > * {
   margin-bottom: 5vh;
 }
+
+
+
+
+
+
+
+#asteroid-stats{
+  padding-bottom: 100px;
+}
+
+#asteroid-table {
+  border-collapse: separate;
+  border-radius: 15px;
+  border-spacing: 10px;
+}
+
+ tr, td{
+  border: 1px white solid;
+  border-collapse: separate;
+  border-radius: 15px;
+}
+
+
+td{
+  padding: 15px;
+  text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
