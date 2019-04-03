@@ -42,6 +42,10 @@ app.get('/location', (request, response) => {
 
 app.get('/location/:id', getAsteroidComparison)
 
+app.get('/about', (request, response) => {
+  response.render('./pages/about');
+});
+
 //TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
 
 //error handler for invalid endpoint

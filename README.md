@@ -60,8 +60,22 @@ Driver/Navigator: 4/1: Jess/Aliya - 4/2: Aliya/Jess
 Feature Name: Map overlay
 Time Estimate: 1 hour
 Start Date/Time: 1220
-End Date/Time: 
-Total Time: 
+End Date/Time: 1730
+Total Time: 5 hours, including lunch
 Driver/Navigator: Jess/Aliya
+
+##Feature:
+Feature Name: About page styling
+Time Estimate: 2 hours
+Start Date/Time: 947
+End Date/Time:
+Total Time: 
+Driver/Navigator: Aliya/Jess
+
+#Contributions and Sources
+Background video: https://www.pexels.com/video/animation-of-stars-857052/
+Google map: https://developers.google.com/maps/documentation/javascript/examples/circle-simple
+Map API: https://developers.google.com/maps/documentation/javascript/reference/#MapOptions%22
+NASA API: https://api.nasa.gov/api.html#neows-lookup
 
 

@@ -36,3 +36,177 @@ footer{
   min-height: 100vh;
   z-index: -1;
 }
+
+/*styles for about page*/
+
+#about-wrapper{
+padding-bottom: 40vh;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+flex-direction: column;
+}
+
+#about-wrapper div{
+  border-radius: 25px;
+}
+
+#about-wrapper .left-dev{
+  display: flex;
+  border: 1px white solid;
+  width: 90%;
+  max-width: 900px;
+  padding: 10px 10px;
+  margin: 50px auto;
+  flex-direction: row;
+}
+
+#about-wrapper .right-dev{
+  display: flex;
+  border: 1px white solid;
+  width: 90%;
+  max-width: 900px;
+  padding: 10px 10px;
+  margin: 50px auto;
+  flex-direction: row-reverse;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
