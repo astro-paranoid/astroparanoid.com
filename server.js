@@ -43,6 +43,11 @@ app.get('/', getAsteroidDataFromAPI);
 
 app.get('/location/:id', getAsteroidComparison)
 
+app.get('/about', (request, response) => {
+  response.render('./pages/about');
+});
+
+
 app.post('/update/:id/:name', updateAsteroidName);
 
 function updateAsteroidName(request, response) {

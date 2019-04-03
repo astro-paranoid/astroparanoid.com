@@ -49,6 +49,72 @@
   height:200px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .asteroid-link {
   text-decoration: none;
 }
@@ -68,6 +134,26 @@
 #map {
   width: 80%;
   border-radius: 1em;
+}
+
+/*styles for about page*/
+
+
+#about-wrapper div img{
+ max-width: 100%;
+ max-height: auto;
+ min-width: 100px;
+}
+
+
+@media only screen and (min-width: 600px){
+
+#about-wrapper div img{
+  border: 1px black solid;
+  border-radius: 50px;
+  min-width: 100px;
+}
+
 }
 
 #astronaut-scale{
