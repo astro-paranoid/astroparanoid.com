@@ -45,10 +45,6 @@
   /* height: 200px; */
 }
 
-#asteroid-scale, #astronaut-scale{
-  height:200px;
-}
-
 
 
 
@@ -121,7 +117,7 @@
 
 .asteroid-container {
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
   padding: 20px 40px;
   margin: 50px auto;
 }
@@ -156,6 +152,31 @@
 
 }
 
-#astronaut-scale{
+#astronaut-scale-image, #asteroid-scale-image {
   transition:5s;
+  height:150px;
+}
+
+#images-container {
+  min-width: 375px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#images-container > div {
+  margin: 50px;
+}
+
+#location-wrapper {
+  /* min-height: 50vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#location-wrapper > * {
+  margin-bottom: 5vh;
 }

@@ -9,10 +9,14 @@
     <%- include('../layout/header')%>
   </header>
 
-  <main id="content-wrapper">
-      <article class="asteroid-container" id="images-container">
-        <img src="/images/astronaut.png" alt="astronaut image" class="astronaut-image" id="astronaut-scale">
-        <img src="<%= asteroid.img %>" alt="asteroid image" class="asteroid-image" id="asteroid-scale"
+  <main id="location-wrapper">
+      <article class="" id="images-container">
+        <div>
+          <img src="/images/astronaut.png" alt="astronaut image" id="astronaut-scale-image">
+        </div>
+        <div>
+          <img src="<%= asteroid.img %>" alt="asteroid image" id="asteroid-scale-image">
+        </div>
       </article>
 
 
@@ -24,15 +28,11 @@
         </form>
       </section>
 
-
       <div id="map" style="height: 425px"></div>
-      
 
       <section id="city-stats">
       </section>
-      <section id="asteroid-stats">
-        
-      </section>
+      <section id="asteroid-stats"></section>
   </main>
 
   <footer>
