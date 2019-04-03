@@ -64,13 +64,21 @@ End Date/Time: 1730
 Total Time: 5 hours, including lunch
 Driver/Navigator: Jess/Aliya
 
-##Feature:
+## Feature:
 Feature Name: About page styling
 Time Estimate: 2 hours
-Start Date/Time: 947
-End Date/Time:
-Total Time: 
+Start Date/Time: 0947
+End Date/Time: 1448
+Total Time: 3 hours (took time for group meetings)
 Driver/Navigator: Aliya/Jess
+
+## Feature:
+Feature Name: Asteroid Stats on Location page
+Time Estimate: 2 hours
+Start Date/Time: 1510
+End Date/Time: 
+Total Time: 
+Driver/Navigator: Jess/Aliya
 
 #Contributions and Sources
 Background video: https://www.pexels.com/video/animation-of-stars-857052/
