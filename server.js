@@ -37,11 +37,26 @@ app.get('/', getAsteroidDataFromAPI);
 
 //route to page with map
 // TODO: delete this route
-app.get('/location', (request, response) => {
-  response.render('./pages/location');
-});
+// app.get('/location', (request, response) => {
+//   response.render('./pages/location');
+// });
 
 app.get('/location/:id', getAsteroidComparison)
+
+app.post('/update/:id/:name', updateAsteroidName);
+
+function updateAsteroidName(request, response) {
+  let name = request.params.name.match(/\([a-z0-9\s]+\)/i);
+
+  const updateSQL = `UPDATE asteroids SET name=$1 WHERE id=$2 RETURNING *;`;
+  const values =[`${request.body.name} ${name}`, request.params.id];
+
+  return client.query(updateSQL, values)
+    .then(sqlReturn => {
+      response.redirect(`/location/${request.params.id}`);
+    })
+    .catch(error => handleError(error));
+}
 
 //TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
 
@@ -59,7 +74,7 @@ function handleError(err, res, errorMessage){
 
 function getAsteroidDataFromAPI(request, response) {
 
-  const selectSQL = `SELECT * FROM asteroids WHERE closest_date=$1`;
+  const selectSQL = `SELECT * FROM asteroids WHERE closest_date=$1 ORDER BY id`;
   const selectValues = [getTodayDate()];
 
   client.query(selectSQL, selectValues)
@@ -98,7 +113,7 @@ function getAsteroidDataFromAPI(request, response) {
 
               asteroidListForWeek.push({ asteroids: asteroidListForDay, maxSize: max });
             });
-
+            console.log(asteroidListForWeek);
             response.render('pages/index', {asteroidList: asteroidListForWeek[0]});
           })
           .catch(error => handleError(error, response, 'Cannot connect to NASA asteroid API'));
