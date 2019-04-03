@@ -15,7 +15,7 @@ function initMap() {
   // Create the map.
   let map = new google.maps.Map(document.getElementById('map'), {
     zoom: 13,
-    center: citymap[Object.keys(citymap)[0]].center, // {lat: 47.6062, lng: -122.3321},
+    center: citymap[Object.keys(citymap)[0]].center,
     mapTypeId: 'hybrid',
     disableDefaultUI: true,
     zoomControl: true,
