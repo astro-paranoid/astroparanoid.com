@@ -8,7 +8,6 @@
   <header>
     <%- include('../layout/header')%>
   </header>
-  <p>Hello</p>
 
   <main id="content-wrapper">
       <article class="asteroid-container">
@@ -16,20 +15,21 @@
       </article>
 
       <div id="map" style="height: 425px"></div>
-      <script src="./js/app.js"></script>
-      <script async defer src="<%= `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&callback=initMap` %>"></script>
 
 
       <section id="city-stats">
       </section>
       <section id="asteroid-stats">
-        
+
       </section>
   </main>
 
   <footer>
     <%- include('../layout/footer')%>
   </footer>
+
+  <script src="../../js/app.js"></script>
+  <script async defer src="<%= `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&callback=initMap` %>"></script>
 </body>
 </html>
 

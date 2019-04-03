@@ -41,6 +41,7 @@
 
 .asteroid-image {
   margin: 20px 0;
+  max-width: 75%;
 }
 
 .asteroid-link {
@@ -49,10 +50,17 @@
 
 .asteroid-container {
   width: 90%;
+  max-width: 400px;
+  padding: 20px 40px;
   margin: 50px auto;
 }
 
 #date{
   padding-top:40px;
   font-size: 15pt;
+}
+
+#map {
+  width: 80%;
+  border-radius: 1em;
 }
