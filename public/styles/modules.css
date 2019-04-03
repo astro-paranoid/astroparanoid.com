@@ -39,9 +39,14 @@
   margin-bottom:10px;
 }
 
-.asteroid-image {
+.asteroid-image, .astronaut-image {
   margin: 20px 0;
   max-width: 95%;
+  /* height: 200px; */
+}
+
+#asteroid-scale, #astronaut-scale{
+  height:200px;
 }
 
 .asteroid-link {
@@ -63,4 +68,8 @@
 #map {
   width: 80%;
   border-radius: 1em;
+}
+
+#astronaut-scale{
+  transition:5s;
 }

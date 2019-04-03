@@ -1,4 +1,13 @@
 'use strict';
+$(()=>{
+  // $('#images-container').on('click', () => {
+    $('#astronaut-scale').css('transform',`scale(${personScale})`);
+  // })
+});
+
+
+
+
 
 let citymap = {
   seattle: {
