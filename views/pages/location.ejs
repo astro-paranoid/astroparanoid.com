@@ -16,13 +16,13 @@
       </article>
 
       <div id="map" style="height: 425px"></div>
-
+      
 
       <section id="city-stats">
 
       </section>
       <section id="asteroid-stats">
-
+        
       </section>
   </main>
 
@@ -30,6 +30,9 @@
     <%- include('../layout/footer')%>
   </footer>
 
+  <script>
+    var asteroidSize = { min: <%= asteroid.diameter_feet_min / 3.2808 %>, max: <%= asteroid.diameter_feet_max / 3.2808 %> };
+  </script>
   <script src="../../js/app.js"></script>
   <script async defer src="<%= `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&callback=initMap` %>"></script>
 </body>

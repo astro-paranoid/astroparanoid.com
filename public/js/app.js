@@ -6,11 +6,6 @@ let citymap = {
   },
 };
 
-let crater = {
-  min: 800,
-  max: 1000,
-};
-
 function initMap() {
   // Create the map.
   let map = new google.maps.Map(document.getElementById('map'), {
@@ -25,6 +20,28 @@ function initMap() {
   // Construct the circle for each value in citymap.
   for (let city in citymap) {
     // Add the circle for this city to the map.
+    let minAsteroidCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.5,
+      strokeWeight: 1,
+      fillColor: '#FF0000',
+      fillOpacity: 0.15,
+      map: map,
+      center: citymap[city].center,
+      radius: asteroidSize['min'],
+    });
+
+    let maxAsteroidCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.5,
+      strokeWeight: 1,
+      fillColor: '#FF0000',
+      fillOpacity: 0.25,
+      map: map,
+      center: citymap[city].center,
+      radius: asteroidSize['max'],
+    });
+
     let minCraterCircle = new google.maps.Circle({
       strokeColor: '#FF0000',
       strokeOpacity: 0.5,
@@ -33,7 +50,7 @@ function initMap() {
       fillOpacity: 0.15,
       map: map,
       center: citymap[city].center,
-      radius: crater['min'],
+      radius: asteroidSize['min'],
     });
 
     let maxCraterCircle = new google.maps.Circle({
@@ -44,7 +61,7 @@ function initMap() {
       fillOpacity: 0.25,
       map: map,
       center: citymap[city].center,
-      radius: crater['max'],
+      radius: asteroidSize['max'],
     });
   }
 }
