@@ -76,9 +76,19 @@ Driver/Navigator: Aliya/Jess
 Feature Name: Asteroid Stats on Location page
 Time Estimate: 2 hours
 Start Date/Time: 1510
-End Date/Time: 
-Total Time: 
+End Date/Time: 1600
+Total Time: 50 minutes
 Driver/Navigator: Jess/Aliya
+
+
+## Feature:
+Feature Name: Style table
+Time Estimate: 15 minutes
+Start Date/Time: 1625
+End Date/Time: 1650
+Total Time: 25 minutes
+Driver/Navigator: Aliya/Jess
+
 
 #Contributions and Sources
 Background video: https://www.pexels.com/video/animation-of-stars-857052/
