@@ -1,5 +1,12 @@
 'use strict';
 
+$(() => {
+  console.log();
+  $('#asteroid-scale-image').animate({height:'+= 100px'}, 3000);
+
+});
+
+
 let citymap = {
   seattle: {
     center: {lat: 47.6062, lng: -122.3321},
