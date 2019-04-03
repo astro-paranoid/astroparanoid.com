@@ -1,8 +1,16 @@
 'use strict';
 $(()=>{
 
-    // $('#astronaut-scale-image').css('transform',`scale(${personScale})`);
-    // $('#asteroid-scale-image').css('transform',`scale(${asteroidScale})`);
+  console.log(personScale, asteroidScale, needleScale);
+  $('#astronaut-scale-image').css('transform',`scale(${personScale})`);
+  $('#asteroid-scale-image').css('transform',`scale(${asteroidScale})`);
+  $('#needle-scale-image').css('transform',`scale(${needleScale})`);
+
+
+  $('#rename-form-button').on('click', () => {
+    $('#rename-form-button').hide();
+    $('#rename-form').show();
+  });
 });
 
 

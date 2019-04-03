@@ -20,3 +20,12 @@ h1{
 a:visited, a:link {
   color: white;
 }
+
+button {
+  font-size: 15pt;
+  width: 200px;
+  height: 50px;
+  border-radius: 2em;
+  border: none;
+  background-color: rgba(238, 238, 238, 0.578);
+}
