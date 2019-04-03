@@ -1,18 +1,8 @@
 'use strict';
 $(()=>{
-  // $('#images-container').on('click', () => {
-    $('#astronaut-scale').css('transform',`scale(${personScale})`);
-  // })
-});
 
-
-
-
-
-$(() => {
-  console.log();
-  $('#asteroid-scale-image').animate({height:'+= 100px'}, 3000);
-
+    // $('#astronaut-scale-image').css('transform',`scale(${personScale})`);
+    // $('#asteroid-scale-image').css('transform',`scale(${asteroidScale})`);
 });
 
 
