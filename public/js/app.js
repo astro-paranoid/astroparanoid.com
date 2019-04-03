@@ -1,15 +1,23 @@
 'use strict';
 
+$(() => {
+  console.log();
+  $('#asteroid-scale-image').animate({height:'+= 100px'}, 3000);
+
+});
+
+
 let citymap = {
   seattle: {
     center: {lat: 47.6062, lng: -122.3321},
   },
 };
 
-let crater = {
-  min: 800,
-  max: 1000,
-};
+// TODO: calculate crater size for asteroid
+// let craterSize = {
+//   min: calculatedCraterMin,
+//   max: calculatedCraterMax,
+// };
 
 function initMap() {
   // Create the map.
@@ -25,7 +33,7 @@ function initMap() {
   // Construct the circle for each value in citymap.
   for (let city in citymap) {
     // Add the circle for this city to the map.
-    let minCraterCircle = new google.maps.Circle({
+    let minAsteroidCircle = new google.maps.Circle({
       strokeColor: '#FF0000',
       strokeOpacity: 0.5,
       strokeWeight: 1,
@@ -33,10 +41,10 @@ function initMap() {
       fillOpacity: 0.15,
       map: map,
       center: citymap[city].center,
-      radius: crater['min'],
+      radius: asteroidSize['min'],
     });
 
-    let maxCraterCircle = new google.maps.Circle({
+    let maxAsteroidCircle = new google.maps.Circle({
       strokeColor: '#FF0000',
       strokeOpacity: 0.5,
       strokeWeight: 1,
@@ -44,7 +52,29 @@ function initMap() {
       fillOpacity: 0.25,
       map: map,
       center: citymap[city].center,
-      radius: crater['max'],
+      radius: asteroidSize['max'],
     });
+
+    // let minCraterCircle = new google.maps.Circle({
+    //   strokeColor: '#FF0000',
+    //   strokeOpacity: 0.5,
+    //   strokeWeight: 1,
+    //   fillColor: '#FF0000',
+    //   fillOpacity: 0.15,
+    //   map: map,
+    //   center: citymap[city].center,
+    //   radius: craterSize['min'],
+    // });
+
+    // let maxCraterCircle = new google.maps.Circle({
+    //   strokeColor: '#FF0000',
+    //   strokeOpacity: 0.5,
+    //   strokeWeight: 1,
+    //   fillColor: '#FF0000',
+    //   fillOpacity: 0.25,
+    //   map: map,
+    //   center: citymap[city].center,
+    //   radius: craterSize['max'],
+    // });
   }
 }
