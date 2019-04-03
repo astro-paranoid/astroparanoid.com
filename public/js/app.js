@@ -68,6 +68,6 @@ function initMap() {
     //   map: map,
     //   center: citymap[city].center,
     //   radius: craterSize['max'],
-    });
+    // });
   }
 }
