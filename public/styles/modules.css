@@ -59,3 +59,8 @@
   padding-top:40px;
   font-size: 15pt;
 }
+
+#map {
+  width: 80%;
+  border-radius: 1em;
+}

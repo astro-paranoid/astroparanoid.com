@@ -120,7 +120,6 @@ function getAsteroidComparison(request, response){
 
   return client.query(sql,values)
     .then(result => {
-      console.log(result.rows[0]);
       return response.render('./pages/location',{asteroid: result.rows[0]});
     })
     .catch(error => handleError(error, response));
