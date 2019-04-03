@@ -6,6 +6,12 @@ let citymap = {
   },
 };
 
+// TODO: calculate crater size for asteroid
+// let craterSize = {
+//   min: calculatedCraterMin,
+//   max: calculatedCraterMax,
+// };
+
 function initMap() {
   // Create the map.
   let map = new google.maps.Map(document.getElementById('map'), {
@@ -42,26 +48,26 @@ function initMap() {
       radius: asteroidSize['max'],
     });
 
-    let minCraterCircle = new google.maps.Circle({
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.5,
-      strokeWeight: 1,
-      fillColor: '#FF0000',
-      fillOpacity: 0.15,
-      map: map,
-      center: citymap[city].center,
-      radius: asteroidSize['min'],
-    });
+    // let minCraterCircle = new google.maps.Circle({
+    //   strokeColor: '#FF0000',
+    //   strokeOpacity: 0.5,
+    //   strokeWeight: 1,
+    //   fillColor: '#FF0000',
+    //   fillOpacity: 0.15,
+    //   map: map,
+    //   center: citymap[city].center,
+    //   radius: craterSize['min'],
+    // });
 
-    let maxCraterCircle = new google.maps.Circle({
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.5,
-      strokeWeight: 1,
-      fillColor: '#FF0000',
-      fillOpacity: 0.25,
-      map: map,
-      center: citymap[city].center,
-      radius: asteroidSize['max'],
+    // let maxCraterCircle = new google.maps.Circle({
+    //   strokeColor: '#FF0000',
+    //   strokeOpacity: 0.5,
+    //   strokeWeight: 1,
+    //   fillColor: '#FF0000',
+    //   fillOpacity: 0.25,
+    //   map: map,
+    //   center: citymap[city].center,
+    //   radius: craterSize['max'],
     });
   }
 }
