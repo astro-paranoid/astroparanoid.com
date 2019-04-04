@@ -169,7 +169,7 @@ td{
   .nav-text{
     display:inline-block;
   }
-  #home-icon, #about-icon{
+  #home-icon, #about-icon, #info-icon{
     display:none;
   }
   #app-title{
