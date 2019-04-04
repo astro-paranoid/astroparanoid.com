@@ -8,7 +8,9 @@
   <header>
     <%- include('../layout/header')%>
   </header>
-  <h2 id="date">Asteroids on <%= asteroidList.asteroids[0].closest_date %></h2>
+  <h2 id="date">Near Earth on <%= asteroidList.asteroids[0].closest_date %></h2>
+  <br>
+  <p>(click on asteroids for more info)</p>
   <main id="content-wrapper">
     <%asteroidList.asteroids.forEach((asteroid) => { %>
       <a href="/location/<%= asteroid.id %>" class="asteroid-link">
@@ -20,23 +22,23 @@
           <h6><%= Number(asteroid.diameter_feet_min).toFixed(2) %> - <%= Number(asteroid.diameter_feet_max).toFixed(2) %> feet wide</h6>
           <h6>Will miss Earth by <%= Number(asteroid.miss_distance_miles).toFixed(2) %> miles</h6>
         </div>
-
-        <!-- <div class="location-input">
-          <form action="/location" method="get">
-            <input type="text" name="search" placeholder="Enter a City" required>
-            <fieldset>
-              <label for ="map">
-                <button type="submit">View Damage to Seattle</button>
-            </fieldset>
-          </form>
-        </div> -->
+        
       </article>
     </a>
-    <%})%>   
+    <button class="likedbutton" id="<%= asteroid.id %>">
+      <i class="fas fa-heart"></i>
+    </button>
+    <%})%>
   </main>
 
   <footer>
     <%- include('../layout/footer')%>
   </footer>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+  </script> 
+  <script src="../../js/app.js"></script>
 </body>
 </html>

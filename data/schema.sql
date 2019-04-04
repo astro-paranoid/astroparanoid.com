@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS liked;
 DROP TABLE IF EXISTS asteroids;
 DROP TABLE IF EXISTS daily_max_size;
 
@@ -13,6 +14,13 @@ CREATE TABLE asteroids (
   sentry_object BOOLEAN,
   closest_date VARCHAR(20),
   img VARCHAR(255)
+);
+
+CREATE TABLE liked (
+  id SERIAL PRIMARY KEY,
+  asteroid_id INTEGER NOT NULL,
+  UNIQUE(asteroid_id),
+  FOREIGN KEY (asteroid_id) REFERENCES asteroids (id)
 );
 
 CREATE TABLE daily_max_size (

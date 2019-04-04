@@ -34,21 +34,17 @@ app.listen(PORT, () => console.log(`Astro-Paranoid listening on ${PORT}`));
 // Route/endpoint handling
 
 app.get('/', getAsteroidDataFromAPI);
-
-//route to page with map
-// TODO: delete this route
-// app.get('/location', (request, response) => {
-//   response.render('./pages/location');
-// });
-
 app.get('/location/:id', getAsteroidComparison)
 
 app.get('/about', (request, response) => {
   response.render('./pages/about');
 });
 
+app.post('/likeAsteroid', addAsteroidToLiked);
 
 app.post('/update/:id/:name', updateAsteroidName);
+
+
 
 function updateAsteroidName(request, response) {
   let name = request.params.name.match(/\([a-z0-9\s]+\)/i);
@@ -145,6 +141,16 @@ function getAsteroidComparison(request, response){
     })
     .catch(error => handleError(error, response));
 }
+
+function addAsteroidToLiked(request, response){
+  if (request.body.id) {
+    let sql = `INSERT INTO liked (asteroid_id) VALUES ($1);`;
+    let liked = [request.body.id];
+    return client.query(sql, liked)
+      .catch(error => console.error(error));
+  }
+}
+
 
 //Asteroid constructor
 function Asteroid (asteroidData) {
