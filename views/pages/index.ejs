@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <%- include('../layout/head') %>
+  <title>Astro-Paranoid</title>
 </head>
 <body>
-  <p>Server is working!</p>
+  <header>
+    <%- include('../layout/header')%>
+  </header>
+  <h2 id="date">Asteroids on <%= asteroidList.asteroids[0].closest_date %></h2>
+  <main id="content-wrapper">
+    <%asteroidList.asteroids.forEach((asteroid) => { %>
+      <a href="/location/<%= asteroid.id %>" class="asteroid-link">
+        <article class="asteroid-container">
+        <img src="<%= asteroid.img%>" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: <%=Math.floor((asteroid.diameter_feet_max/asteroidList.maxSize) * 75)%>%">
+
+        <div class="name-size">
+          <h4><%= asteroid.name %></h4>
+          <h6><%= Number(asteroid.diameter_feet_min).toFixed(2) %> - <%= Number(asteroid.diameter_feet_max).toFixed(2) %> feet wide</h6>
+          <h6>Will miss Earth by <%= Number(asteroid.miss_distance_miles).toFixed(2) %> miles</h6>
+        </div>
+
+        <!-- <div class="location-input">
+          <form action="/location" method="get">
+            <input type="text" name="search" placeholder="Enter a City" required>
+            <fieldset>
+              <label for ="map">
+                <button type="submit">View Damage to Seattle</button>
+            </fieldset>
+          </form>
+        </div> -->
+      </article>
+    </a>
+    <%})%>   
+  </main>
+
+  <footer>
+    <%- include('../layout/footer')%>
+  </footer>
 </body>
 </html>
