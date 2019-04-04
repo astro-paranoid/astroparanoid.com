@@ -19,6 +19,12 @@ $(()=>{
     $('#rename-form').show();
   });
 
+  $('.likedbutton').on('click', function() {
+    $.post('/likeAsteroid/', {id : this.id}, (response) =>{
+      console.log(response);
+    })
+
+  })
 });
 
 
