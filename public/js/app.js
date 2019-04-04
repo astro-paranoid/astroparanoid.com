@@ -1,13 +1,24 @@
 'use strict';
 $(()=>{
-  $('#astronaut-scale-image').css('transform',`scale(${personScale})`);
-  $('#asteroid-scale-image').css('transform',`scale(${asteroidScale})`);
-  $('#needle-scale-image').css('transform',`scale(${needleScale})`);
+
+  $('#images-container').on('click', () => {
+    $('#astronaut-scale-image').css('transform',`scale(${personScale})`);
+    $('#asteroid-scale-image').css('transform',`scale(${asteroidScale})`);
+    $('#needle-scale-image').css('transform',`scale(${needleScale})`);
+
+    $('#images-container').off('click');
+    $('#images-container').css('cursor', 'default');
+  });
+
+  $(document).on('scroll', () => {
+    $('.user-input').fadeIn(1000);
+  });
 
   $('#rename-form-button').on('click', () => {
     $('#rename-form-button').hide();
     $('#rename-form').show();
   });
+
 });
 
 
