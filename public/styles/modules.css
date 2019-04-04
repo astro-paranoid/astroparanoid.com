@@ -185,9 +185,11 @@ td{
     display:inline-block;
     font-size: x-large;
   }
-  #home-icon, #about-icon, #info-icon{
-    display:none;
+
+  .nav-item i {
+    display: none;
   }
+
   #app-title{
     padding-bottom:1vh;
   }
@@ -216,6 +218,16 @@ td{
 #mission-statement p {
   font-size:1.5em;
   line-height: 2em;
+}
+
+#error-asteroid{
+  width:400px;
+}
+
+#error-message{
+  width:75%;
+  margin:auto;
+  font-size: 1.8em;
 }
 
 

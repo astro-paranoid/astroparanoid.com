@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../layout/head') %>
+  <title>Astro-Paranoid</title>
+</head>
+<body>
+  <header>
+    <%- include('../layout/header') %>
+  </header>
+  <%- include('../layout/nav-bar') %>
+  <h2 id="date">
+    <%=asteroids.length %> Liked Asteroids 
+    <br>
+  </h2>
+  <br>
+  <p>(click on asteroids for more info)</p>
+  <main id="content-wrapper">
+    <%asteroids.forEach((asteroid) => { %>
+        <article class="asteroid-container">
+          <a href="/location/<%= asteroid.id %>" class="asteroid-link">
+            <img src="<%= asteroid.img%>" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: 300px">
+
+            <div class="name-size">
+              <h4><%= asteroid.name %></h4>
+              <h6><%= Number(asteroid.diameter_feet_min).toFixed(2) %> - <%= Number(asteroid.diameter_feet_max).toFixed(2) %> feet wide</h6>
+              <h6>Will miss Earth by <%= Number(asteroid.miss_distance_miles).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","); %> miles</h6>
+            </div>
+          </a>
+        <span class="likedbutton" id="<%= asteroid.id %>" style="color: red">
+          <i class="fas fa-heart fa-2x"></i>
+        </span>
+      </article>
+    </a>
+    <%})%>
+  </main>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+  </script> 
+  <script src="../../js/app.js"></script>
+</body>
+</html>

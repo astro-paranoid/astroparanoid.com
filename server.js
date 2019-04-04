@@ -42,6 +42,8 @@ app.get('/about', (request, response) => {
 
 app.get('/liked', getLikedAsteroids);
 
+app.get('/all', getAllAsteroids);
+
 app.get('/info',(request,response)=>{
   response.render('./pages/info');
 });
@@ -51,7 +53,22 @@ app.post('/likeAsteroid', addAsteroidToLiked);
 app.post('/update/:id/:name', updateAsteroidName);
 
 //error handler for invalid endpoint
-app.use('*', (req, res) => res.send('Sorry, an asteroid hit this route and it no longer exists'));
+app.use('*', (req, res) => res.render('./pages/error'));
+
+
+function getLikedAsteroids(request, response) {
+  const sql = `SELECT DISTINCT asteroids.* FROM asteroids JOIN liked ON liked.asteroid_id=asteroids.id;`;
+  client.query(sql)
+    .then(sqlReturn => response.render('pages/liked', {asteroids : sqlReturn.rows}))
+    .catch(error => handleError(error));
+}
+
+function getAllAsteroids(request, response) {
+  const sql = `SELECT DISTINCT * FROM asteroids;`;
+  client.query(sql)
+    .then(sqlReturn => response.render('pages/all', {asteroids: sqlReturn.rows}))
+    .catch(error => handleError(error));
+}
 
 function updateAsteroidName(request, response) {
   let name = request.params.name.match(/\([a-z0-9\s]+\)/i);

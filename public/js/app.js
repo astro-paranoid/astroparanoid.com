@@ -24,7 +24,7 @@ $(()=>{
 
   $('.likedbutton').on('click', function() {
     likeAnimation(this);
-    $.post('/likeAsteroid/', {id : this.id});
+    (this.id) ? $.post('/likeAsteroid/', {id : this.id}) : '';
     
     likedButtons = localStorage.getItem('likedAsteroid');
     if (!likedButtons || !likedButtons.includes(`_${this.id}_`)) {
