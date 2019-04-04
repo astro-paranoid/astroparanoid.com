@@ -58,6 +58,7 @@
   width: 80%;
   margin: 10vh auto;
   border-radius: 1em;
+  margin-top:0;
 }
 
 /*styles for about page*/
@@ -168,13 +169,34 @@ td{
   .nav-text{
     display:inline-block;
   }
-  #home-icon, #about-icon{
+  #home-icon, #about-icon, #info-icon{
     display:none;
   }
   #app-title{
     padding-bottom:1vh;
   }
 
+}
+
+.caption{
+  border:1px solid white;
+  padding:15px;
+  border-radius: 15px;
+  margin:0px;
+}
+
+#mission-statement{
+  border:1px solid white;
+  padding:15px;
+  border-radius: 15px;
+  width:80%;
+  margin:auto;
+  margin-top: 8vh;
+}
+
+#mission-statement p{
+  font-size:1.5em;
+  line-height: 2em;
 }
 
 

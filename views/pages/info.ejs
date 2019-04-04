@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../layout/head')%>
+</head>
+<body>
+    <%- include('../layout/header')%>
+  <div id="mission-statement">
+    <h1>Our Mission:</h1>
+    <p>This app was created with the intent to inform the public about the nearest asteroids approaching Earth on any given day. We recognize the intimidating scope of space, which is why we took a more light-hearted approach to our design.  </p>
+  </div>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+  </script> 
+  <script src="../../js/app.js"></script>
+  <script async defer src="<%= `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&callback=initMap` %>"></script>
+
+</body>
+</html>
