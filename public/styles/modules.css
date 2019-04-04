@@ -149,3 +149,53 @@ td{
   position: fixed;
   bottom: 5vh;
 }
+
+@media(max-width:767px){
+  .nav-text{
+  display:none;
+  }
+}
+
+@media(min-width:768px){
+  .fixed-nav {
+    position: sticky;
+    top: 0;
+    margin-bottom:5vh;
+    padding:2%;
+    display:flex;
+    justify-content: center;
+  }
+  .nav-text{
+    display:inline-block;
+  }
+  #home-icon, #about-icon{
+    display:none;
+  }
+  #app-title{
+    padding-bottom:1vh;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
