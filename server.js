@@ -129,7 +129,7 @@ function getAsteroidDataFromAPI(request, response) {
           .then(maxSelectReturn => {
             response.render('pages/index', {asteroidList: {asteroids : selectReturn.rows, maxSize: maxSelectReturn.rows[0].size}})
           })
-          .catch();
+          .catch(error => handleError(error));
       }
     })
     .catch(error => handleError(error));
