@@ -1,4 +1,5 @@
 'use strict';
+
 $(()=>{
 
   $('#images-container').on('click', () => {
@@ -19,9 +20,25 @@ $(()=>{
     $('#rename-form').show();
   });
 
+  let likedButtons = localStorage.getItem('likedAsteroid');
+
+  if (likedButtons) {
+
+    Object.values($('.likedbutton')).forEach(button => {   
+      if (likedButtons.includes(`_${button.id}_`)) {
+        $(button).hide();
+      }
+    })
+  }
+
+
   $('.likedbutton').on('click', function() {
     $(this).hide().css({'color': 'red', 'zoom': '1.05'}).fadeIn(400);
     $.post('/likeAsteroid/', {id : this.id});
+    
+    likedButtons = localStorage.getItem('likedAsteroid');
+    localStorage.setItem('likedAsteroid', `${(likedButtons) ? likedButtons:''}_${this.id}_`);
+    $(this).off('click');
   });
 });
 
@@ -73,27 +90,5 @@ function initMap() {
       center: citymap[city].center,
       radius: asteroidSize['max'],
     });
-
-    // let minCraterCircle = new google.maps.Circle({
-    //   strokeColor: '#FF0000',
-    //   strokeOpacity: 0.5,
-    //   strokeWeight: 1,
-    //   fillColor: '#FF0000',
-    //   fillOpacity: 0.15,
-    //   map: map,
-    //   center: citymap[city].center,
-    //   radius: craterSize['min'],
-    // });
-
-    // let maxCraterCircle = new google.maps.Circle({
-    //   strokeColor: '#FF0000',
-    //   strokeOpacity: 0.5,
-    //   strokeWeight: 1,
-    //   fillColor: '#FF0000',
-    //   fillOpacity: 0.25,
-    //   map: map,
-    //   center: citymap[city].center,
-    //   radius: craterSize['max'],
-    // });
   }
 }

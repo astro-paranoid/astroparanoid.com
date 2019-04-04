@@ -89,6 +89,14 @@ End Date/Time: 1650
 Total Time: 25 minutes
 Driver/Navigator: Aliya/Jess
 
+## Feature:
+Feature Name: adding local storage for likes
+Time Estimate: 45 minutes
+Start Date/Time: 4/4/19 1125
+End Date/Time: 
+Total Time: 
+Driver/Navigator: Jess/Aliya
+
 
 #Contributions and Sources
 Background video: https://www.pexels.com/video/animation-of-stars-857052/
