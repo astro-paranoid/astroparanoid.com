@@ -26,8 +26,8 @@
     </article>
     <p class="caption">Size of asteroid compared to Seattle</p>
     <div id="map" style="height: 50vh"></div>
-    <p class="caption">Asteroid Stats</p>
     <div id="asteroid-stats">
+      <p class="caption">Asteroid Stats</p>
       <table id="asteroid-table">
         <tr>
           <td>Name: </td>
@@ -59,13 +59,14 @@
           <td> <%=asteroid.sentry_object%></td>
         </tr>
       </table>
+      <span class="likedbutton" id="<%= asteroid.id %>">
+        <i class="fas fa-heart fa-2x"></i>
+      </span>
     </div>
 
     <section class="user-input hidden">
       <form id="rename-form" class="hidden" action="/update/<%= asteroid.id %>/<%= asteroid.name %>" method="post">
-        <!-- <label for="name">Name:</label> -->
         <input id="rename-input" type="text" name="name" value="" placeholder="enter new name">
-        <!-- <input type="submit" value="Submit"> -->
       </form>
       <button id="rename-form-button" type="button">Rename Asteroid</button>
     </section>
