@@ -27,7 +27,20 @@ a:visited, a:link {
   color: white;
 }
 
-button, #rename-input {
+.likedbutton {
+  border-radius: 50%;
+  /* background-color: white; */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+#rename-form-button, #rename-input {
   font-size: 15pt;
   width: 250px;
   height: 50px;

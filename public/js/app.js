@@ -33,14 +33,13 @@ $(()=>{
 
 
   $('.likedbutton').on('click', function() {
-    $.post('/likeAsteroid/', {id : this.id}, (response) =>{
-      // console.log(response);
-    })
+    $(this).hide().css({'color': 'red', 'zoom': '1.05'}).fadeIn(400);
+    $.post('/likeAsteroid/', {id : this.id});
+    
     likedButtons = localStorage.getItem('likedAsteroid');
     localStorage.setItem('likedAsteroid', `${(likedButtons) ? likedButtons:''}_${this.id}_`);
     $(this).off('click');
-
-  })
+  });
 });
 
 
@@ -93,17 +92,3 @@ function initMap() {
     });
   }
 }
-
-//saving likes to local storage
-$(function () {
-  $('.likedbutton').change(function () {
-    localStorage.setItem('likedAsteroid', this.value);
-  });
-  if(localStorage.getItem('likedAsteroid')){
-    $('.likedbutton').val(localStorage.getItem('likedAsteroid'));
-  }
-  console.log('likedAsteroid');
-});
-
-
-

@@ -35,21 +35,21 @@
   <p>(click on asteroids for more info)</p>
   <main id="content-wrapper">
     <%asteroidList.asteroids.forEach((asteroid) => { %>
-      <a href="/location/<%= asteroid.id %>" class="asteroid-link">
         <article class="asteroid-container">
-        <img src="<%= asteroid.img%>" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: <%=Math.floor((asteroid.diameter_feet_max/asteroidList.maxSize) * 75)%>%">
+          <a href="/location/<%= asteroid.id %>" class="asteroid-link">
+            <img src="<%= asteroid.img%>" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: <%=Math.floor((asteroid.diameter_feet_max/asteroidList.maxSize) * 75)%>%">
 
-        <div class="name-size">
-          <h4><%= asteroid.name %></h4>
-          <h6><%= Number(asteroid.diameter_feet_min).toFixed(2) %> - <%= Number(asteroid.diameter_feet_max).toFixed(2) %> feet wide</h6>
-          <h6>Will miss Earth by <%= Number(asteroid.miss_distance_miles).toFixed(2) %> miles</h6>
-        </div>
-        
+            <div class="name-size">
+              <h4><%= asteroid.name %></h4>
+              <h6><%= Number(asteroid.diameter_feet_min).toFixed(2) %> - <%= Number(asteroid.diameter_feet_max).toFixed(2) %> feet wide</h6>
+              <h6>Will miss Earth by <%= Number(asteroid.miss_distance_miles).toFixed(2) %> miles</h6>
+            </div>
+          </a>
+        <span class="likedbutton" id="<%= asteroid.id %>">
+          <i class="fas fa-heart fa-2x"></i>
+        </span>
       </article>
     </a>
-    <button class="likedbutton" id="<%= asteroid.id %>">
-      <i class="fas fa-heart"></i>
-    </button>
     <%})%>
   </main>
 
