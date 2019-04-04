@@ -185,9 +185,11 @@ td{
     display:inline-block;
     font-size: x-large;
   }
-  #home-icon, #about-icon, #info-icon{
-    display:none;
+
+  .nav-item i {
+    display: none;
   }
+
   #app-title{
     padding-bottom:1vh;
   }

@@ -10,18 +10,16 @@
   </header>
   <%- include('../layout/nav-bar') %>
   <h2 id="date">
-    <%=asteroidList.asteroids.length %> Asteroids 
+    <%=asteroids.length %> Liked Asteroids 
     <br>
-    <br>
-    Near Earth on <%= asteroidList.asteroids[0].closest_date %>
   </h2>
   <br>
   <p>(click on asteroids for more info)</p>
   <main id="content-wrapper">
-    <%asteroidList.asteroids.forEach((asteroid) => { %>
+    <%asteroids.forEach((asteroid) => { %>
         <article class="asteroid-container">
           <a href="/location/<%= asteroid.id %>" class="asteroid-link">
-            <img src="<%= asteroid.img%>" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: <%=Math.floor((asteroid.diameter_feet_max/asteroidList.maxSize) * 75)%>%">
+            <img src="<%= asteroid.img%>" alt="" class="asteroid-image" data-size="<%= Math.floor(asteroid.diameter_feet_max) %>" style="width: 300px">
 
             <div class="name-size">
               <h4><%= asteroid.name %></h4>
@@ -29,17 +27,13 @@
               <h6>Will miss Earth by <%= Number(asteroid.miss_distance_miles).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","); %> miles</h6>
             </div>
           </a>
-        <span class="likedbutton" id="<%= asteroid.id %>">
+        <span class="likedbutton" id="<%= asteroid.id %>" style="color: red">
           <i class="fas fa-heart fa-2x"></i>
         </span>
       </article>
     </a>
     <%})%>
   </main>
-
-  <footer>
-    <%- include('../layout/footer')%>
-  </footer>
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
