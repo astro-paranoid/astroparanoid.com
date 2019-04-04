@@ -4,10 +4,6 @@ $(()=>{
   $('#asteroid-scale-image').css('transform',`scale(${asteroidScale})`);
   $('#needle-scale-image').css('transform',`scale(${needleScale})`);
 
-  setTimeout(()=> {
-    // $('#images-container > div').height('auto');
-  }, 5400);
-
   $('#rename-form-button').on('click', () => {
     $('#rename-form-button').hide();
     $('#rename-form').show();
