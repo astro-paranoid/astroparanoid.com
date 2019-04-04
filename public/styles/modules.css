@@ -5,6 +5,7 @@
 
 #app-title:hover, #app-title:active{
   transform: scale(1.08);
+  transition: 0.5s;
 }
 
 .logo{
@@ -23,10 +24,12 @@
 
 .nav-item:hover, .nav-item:active {
   transform:scale(1.35);
+  transition: 0.5s;
 }
 
 .asteroid-image:hover {
   transform: scale(1.05);
+  transition: 0.5s;
   filter: brightness(0.5) sepia(1) saturate(10000%) hue-rotate(180deg);
 }
 
@@ -162,18 +165,24 @@ td{
     position: sticky;
     top: 0;
     margin-bottom:5vh;
-    padding:2%;
+    padding: 10px;
     display:flex;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.95);
   }
   .nav-text{
     display:inline-block;
+    font-size: x-large;
   }
   #home-icon, #about-icon, #info-icon{
     display:none;
   }
   #app-title{
     padding-bottom:1vh;
+  }
+
+  .nav-item-link {
+    margin-right: 5vw;
   }
 
 }
