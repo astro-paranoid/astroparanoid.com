@@ -207,6 +207,16 @@ td{
   line-height: 2em;
 }
 
+#error-asteroid{
+  width:400px;
+}
+
+#error-message{
+  width:75%;
+  margin:auto;
+  font-size: 1.8em;
+}
+
 
 
 
