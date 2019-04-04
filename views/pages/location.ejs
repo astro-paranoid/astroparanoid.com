@@ -12,20 +12,18 @@
   <main id="location-wrapper">
       <article class="" id="images-container">
         <div>
-          <img src="/images/astronaut.png" alt="astronaut image" class="scale-image" id="astronaut-scale-image">
-        </div>
-        <div>
-            <img src="/images/needle.png" alt="space needle image" class="scale-image" id="needle-scale-image">
-        </div>
-        <div>
           <img src="<%= asteroid.img %>" alt="asteroid image" class="scale-image" id="asteroid-scale-image">
+        </div>
+        <div>
+          <img src="/images/needle.png" alt="space needle image" class="scale-image" id="needle-scale-image">
+        </div>
+        <div>
+          <img src="/images/astronaut.png" alt="astronaut image" class="scale-image" id="astronaut-scale-image">
         </div>
       </article>
 
       <div id="map" style="height: 50vh"></div>
-      
-      <section id="city-stats">
-      </section>
+
       <div id="asteroid-stats">
         <table id="asteroid-table">
           <tr>
@@ -54,11 +52,20 @@
             <td> <%= Number(asteroid.miss_distance_miles).toFixed(2)%> miles</td>
           </tr>
           <tr>
-            <td>On Nasa's impact monitoring list?</td>
+            <td>On NASA's impact monitoring list?</td>
             <td> <%=asteroid.sentry_object%></td>
           </tr>
         </table>
       </div>
+
+      <section class="user-input">
+        <form id="rename-form" class="hidden" action="/update/<%= asteroid.id %>/<%= asteroid.name %>" method="post">
+          <label for="name">Name:</label>
+          <input type="text" name="name" value="" placeholder="<%= asteroid.name %>">
+          <input type="submit" value="Submit">
+        </form>
+        <button id="rename-form-button" type="button">Rename Asteroid</button>
+      </section>
   </main>
     
   <footer>
