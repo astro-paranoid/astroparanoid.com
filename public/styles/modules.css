@@ -62,7 +62,22 @@
 }
 
 /*styles for about page*/
+#about-wrapper div {
+  max-height: 125px;
 
+}
+
+
+
+.info-container p {
+  overflow: hidden;
+  padding-top: 1%;
+  font-size: 0.7em;
+}
+
+.info-container h4 {
+  padding-bottom: 1%;
+}
 
 #about-wrapper div img{
  max-width: 100%;
@@ -72,6 +87,10 @@
 
 
 @media only screen and (min-width: 600px){
+
+  .info-container p {
+    font-size: 1em;
+  }
 
   #about-wrapper div img{
     border: 1px black solid;
@@ -110,4 +129,26 @@
 
 #location-wrapper > * {
   margin-bottom: 5vh;
+}
+
+#asteroid-stats{
+  padding-bottom: 100px;
+}
+
+#asteroid-table {
+  border-collapse: separate;
+  border-radius: 15px;
+  border-spacing: 10px;
+}
+
+ tr, td{
+  border: 1px white solid;
+  border-collapse: separate;
+  border-radius: 15px;
+}
+
+
+td{
+  padding: 15px;
+  text-align: left;
 }
