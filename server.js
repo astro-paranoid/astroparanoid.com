@@ -40,6 +40,8 @@ app.get('/about', (request, response) => {
   response.render('./pages/about');
 });
 
+app.get('/liked', getLikedAsteroids);
+
 app.get('/info',(request,response)=>{
   response.render('./pages/info');
 });
@@ -48,7 +50,8 @@ app.post('/likeAsteroid', addAsteroidToLiked);
 
 app.post('/update/:id/:name', updateAsteroidName);
 
-
+//error handler for invalid endpoint
+app.use('*', (req, res) => res.send('Sorry, an asteroid hit this route and it no longer exists'));
 
 function updateAsteroidName(request, response) {
   let name = request.params.name.match(/\([a-z0-9\s]+\)/i);
@@ -62,11 +65,6 @@ function updateAsteroidName(request, response) {
     })
     .catch(error => handleError(error));
 }
-
-//TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
-
-//error handler for invalid endpoint
-app.use('*', (req, res) => res.send('Sorry, an asteroid hit this route and it no longer exists'));
 
 //Error handler for 500 error
 function handleError(err, res, errorMessage){
