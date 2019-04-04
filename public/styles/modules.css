@@ -199,11 +199,10 @@ td{
   padding:15px;
   border-radius: 15px;
   width:80%;
-  margin:auto;
-  margin-top: 8vh;
+  margin: 5vh auto 15vh auto;;
 }
 
-#mission-statement p{
+#mission-statement p {
   font-size:1.5em;
   line-height: 2em;
 }
