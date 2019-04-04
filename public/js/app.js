@@ -20,11 +20,9 @@ $(()=>{
   });
 
   $('.likedbutton').on('click', function() {
-    $.post('/likeAsteroid/', {id : this.id}, (response) =>{
-      console.log(response);
-    })
-
-  })
+    $(this).hide().css({'color': 'red', 'zoom': '1.05'}).fadeIn(400);
+    $.post('/likeAsteroid/', {id : this.id});
+  });
 });
 
 
