@@ -40,6 +40,10 @@ app.get('/about', (request, response) => {
   response.render('./pages/about');
 });
 
+app.get('/info',(request,response)=>{
+  response.render('./pages/info');
+});
+
 app.post('/likeAsteroid', addAsteroidToLiked);
 
 app.post('/update/:id/:name', updateAsteroidName);
