@@ -66,7 +66,7 @@ function updateAsteroidName(request, response) {
 //TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
 
 //error handler for invalid endpoint
-app.use('*', (req, res) => res.send('Sorry, an asteroid hit this route and it no longer exists'));
+app.use('*', (req, res) => res.render('./pages/error'));
 
 //Error handler for 500 error
 function handleError(err, res, errorMessage){
