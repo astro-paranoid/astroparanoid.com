@@ -22,24 +22,33 @@ $(()=>{
 
   let likedButtons = localStorage.getItem('likedAsteroid');
 
-  if (likedButtons) {
+  $('.likedbutton').on('click', function() {
+    likeAnimation(this);
+    $.post('/likeAsteroid/', {id : this.id});
+    
+    likedButtons = localStorage.getItem('likedAsteroid');
+    if (!likedButtons || !likedButtons.includes(`_${this.id}_`)) {
+      localStorage.setItem('likedAsteroid', `${(likedButtons) ? likedButtons:''}_${this.id}_`);
+      $(this).off('click').on('click', function() {
+        likeAnimation(this);
+      });
+    }
+  });
 
+  if (likedButtons) {
     Object.values($('.likedbutton')).forEach(button => {   
       if (likedButtons.includes(`_${button.id}_`)) {
-        $(button).hide();
+        likeAnimation($(button));
+        $(button).off('click').on('click', function() {
+          likeAnimation(this);
+        });
       }
     })
   }
 
-
-  $('.likedbutton').on('click', function() {
-    $(this).hide().css({'color': 'red', 'zoom': '1.05'}).fadeIn(400);
-    $.post('/likeAsteroid/', {id : this.id});
-    
-    likedButtons = localStorage.getItem('likedAsteroid');
-    localStorage.setItem('likedAsteroid', `${(likedButtons) ? likedButtons:''}_${this.id}_`);
-    $(this).off('click');
-  });
+  function likeAnimation(button) {
+    $(button).hide().css({'color': 'red', 'zoom': '1.05'}).fadeIn(400);
+  }
 });
 
 
