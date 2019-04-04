@@ -8,7 +8,12 @@
   <header>
     <%- include('../layout/header')%>
   </header>
-  <h2 id="date">Near Earth on <%= asteroidList.asteroids[0].closest_date %></h2>
+  <h2 id="date">
+    <%=asteroidList.asteroids.length %> Asteroids 
+    <br>
+    <br>
+    Near Earth on <%= asteroidList.asteroids[0].closest_date %>
+  </h2>
   <br>
   <p>(click on asteroids for more info)</p>
   <main id="content-wrapper">
