@@ -12,28 +12,20 @@
   <main id="location-wrapper">
       <article class="" id="images-container">
         <div>
-          <img src="/images/astronaut.png" alt="astronaut image" id="astronaut-scale-image">
+          <img src="/images/astronaut.png" alt="astronaut image" class="scale-image" id="astronaut-scale-image">
         </div>
         <div>
-          <img src="<%= asteroid.img %>" alt="asteroid image" id="asteroid-scale-image">
+            <img src="/images/needle.png" alt="space needle image" class="scale-image" id="needle-scale-image">
+        </div>
+        <div>
+          <img src="<%= asteroid.img %>" alt="asteroid image" class="scale-image" id="asteroid-scale-image">
         </div>
       </article>
 
-
-      <section class="user-input">
-        <button>Rename Asteroid</button>
-        <form action="/update/<%= asteroid.id %>/<%= asteroid.name %>" method="post">
-          <input type="text" name="name" value="<%= asteroid.name %>" placeholder="Asteroid Name">
-          <button type="submit">Rename!</button>
-        </form>
-      </section>
-
-      
-      <div id="map" style="height: 425px"></div>
+      <div id="map" style="height: 50vh"></div>
       
       <section id="city-stats">
       </section>
-      <section id="asteroid-stats"></section>
       <div id="asteroid-stats">
         <table id="asteroid-table">
           <tr>
@@ -65,30 +57,29 @@
             <td>On Nasa's impact monitoring list?</td>
             <td> <%=asteroid.sentry_object%></td>
           </tr>
-      
-      
         </table>
-      
-      
-      
       </div>
-    </main>
+  </main>
     
-    <footer>
+  <footer>
     <%- include('../layout/footer')%>
   </footer>
   <script>
-    var midpoint = <%= (asteroid.diameter_feet_min - 5.5) / 2%>;
-    var asteroidScale = <%= asteroid.diameter_feet_min%> /midpoint;
+    var midpoint = (<%= asteroid.diameter_feet_min %> + 5.5 + 605) / 3;
+    var asteroidScale = <%= asteroid.diameter_feet_min %> / midpoint;
     var personScale = 5.5 / midpoint;
+    var needleScale = 605 / midpoint;
 
+    console.log('midpoint', midpoint);
 
     var asteroidSize = { min: <%= asteroid.diameter_feet_min / 3.2808 %>, max: <%= asteroid.diameter_feet_max / 3.2808 %> };
-    </script>
-    <script
+  </script>
+
+  <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script> 
+    crossorigin="anonymous">
+  </script> 
   <script src="../../js/app.js"></script>
   <script async defer src="<%= `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&callback=initMap` %>"></script>
 </body>

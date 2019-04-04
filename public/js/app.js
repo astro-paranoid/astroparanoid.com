@@ -1,8 +1,17 @@
 'use strict';
 $(()=>{
+  $('#astronaut-scale-image').css('transform',`scale(${personScale})`);
+  $('#asteroid-scale-image').css('transform',`scale(${asteroidScale})`);
+  $('#needle-scale-image').css('transform',`scale(${needleScale})`);
 
-    // $('#astronaut-scale-image').css('transform',`scale(${personScale})`);
-    // $('#asteroid-scale-image').css('transform',`scale(${asteroidScale})`);
+  setTimeout(()=> {
+    // $('#images-container > div').height('auto');
+  }, 5400);
+
+  $('#rename-form-button').on('click', () => {
+    $('#rename-form-button').hide();
+    $('#rename-form').show();
+  });
 });
 
 

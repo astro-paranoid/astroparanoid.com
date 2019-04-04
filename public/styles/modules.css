@@ -39,78 +39,6 @@
   margin-bottom:10px;
 }
 
-.asteroid-image, .astronaut-image {
-  margin: 20px 0;
-  max-width: 95%;
-  /* height: 200px; */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .asteroid-link {
   text-decoration: none;
 }
@@ -129,6 +57,7 @@
 
 #map {
   width: 80%;
+  margin: 3vh auto;
   border-radius: 1em;
 }
 
@@ -159,52 +88,48 @@
 
 @media only screen and (min-width: 600px){
 
-.info-container p {
-  font-size: 1em;
+  .info-container p {
+    font-size: 1em;
+  }
+
+  #about-wrapper div img{
+    border: 1px black solid;
+    border-radius: 50px;
+    min-width: 100px;
+  }
+
 }
 
-#about-wrapper div img{
-  border: 1px black solid;
-  border-radius: 50px;
-  min-width: 100px;
-}
-
-}
-
-#astronaut-scale-image, #asteroid-scale-image {
+.scale-image {
   transition:5s;
-  height:150px;
+  height:100px;
+  margin: 20px 0;
+  max-width: 95%;
 }
 
 #images-container {
   min-width: 375px;
   width: 90%;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 }
 
 #images-container > div {
-  margin: 50px;
+  margin: 2vh;
 }
 
 #location-wrapper {
-  /* min-height: 50vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10vh 0;
 }
 
 #location-wrapper > * {
   margin-bottom: 5vh;
 }
-
-
-
-
-
-
 
 #asteroid-stats{
   padding-bottom: 100px;
@@ -227,71 +152,3 @@ td{
   padding: 15px;
   text-align: left;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
