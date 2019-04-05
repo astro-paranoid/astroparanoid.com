@@ -165,9 +165,28 @@ td{
   bottom: 5vh;
 }
 
+#mission-statement{
+  padding:15px;
+  border-radius: 15px;
+  width:80%;
+  margin: 5vh auto 15vh auto;;
+}
+
+#mission-statement p {
+  font-size:1.5em;
+  line-height: 2.75em;
+  letter-spacing: .07em;
+}
+
 @media(max-width:767px){
   .nav-text{
   display:none;
+  }
+  #mission-statement p{
+    line-height: 1.5em;
+  }
+  #mission-statement{
+    width:90%;
   }
 }
 
@@ -197,7 +216,6 @@ td{
   .nav-item-link {
     margin-right: 5vw;
   }
-
 }
 
 .caption{
@@ -205,19 +223,6 @@ td{
   padding:15px;
   border-radius: 15px;
   margin:0px;
-}
-
-#mission-statement{
-  border:1px solid white;
-  padding:15px;
-  border-radius: 15px;
-  width:80%;
-  margin: 5vh auto 15vh auto;;
-}
-
-#mission-statement p {
-  font-size:1.5em;
-  line-height: 2em;
 }
 
 #error-asteroid{
