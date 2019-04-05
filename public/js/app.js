@@ -24,8 +24,13 @@ $(()=>{
 
   $('.likedbutton').on('click', function() {
     likeAnimation(this);
+<<<<<<< HEAD
     $.post('/likeAsteroid/', {id : this.id});
 
+=======
+    (this.id) ? $.post('/likeAsteroid/', {id : this.id}) : '';
+    
+>>>>>>> fb4e8425721e1f61669b73afbeea5d63dd14094c
     likedButtons = localStorage.getItem('likedAsteroid');
     if (!likedButtons || !likedButtons.includes(`_${this.id}_`)) {
       localStorage.setItem('likedAsteroid', `${(likedButtons) ? likedButtons:''}_${this.id}_`);
