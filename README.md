@@ -36,13 +36,17 @@ Google Maps JavaScript API
 
 ## Instructions for running locally:
     1) Download repo
+    
     2) Run 'npm i'
+    
     3) Set up .env file with variables with the following:
         3a) DATABASE_URL=[url to your postgreSQL database]
         3b) ASTEROID_API=[NASA API KEY]
         3c) GOOGLE_MAPS_API=[GOOGLE MAPS JAVASCRIPT API KEY]
         3d) PORT=[PORT num to run server on]
+        
     4) Start up server using nodemon
+    
     5) Have fun!
 
 
