@@ -173,7 +173,9 @@ td{
 
 @media(min-width:768px){
   .fixed-nav {
+    position: -webkit-sticky;
     position: sticky;
+    max-height: 75px;
     top: 0;
     margin-bottom:5vh;
     padding: 10px;
