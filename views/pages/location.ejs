@@ -63,9 +63,9 @@
 
     <section class="user-input hidden">
       <form id="rename-form" class="hidden" action="/update/<%= asteroid.id %>/<%= asteroid.name %>" method="post">
-        <!-- <label for="name">Name:</label> -->
+       
         <input id="rename-input" type="text" name="name" value="" placeholder="enter new name">
-        <!-- <input type="submit" value="Submit"> -->
+      
       </form>
       <button id="rename-form-button" type="button">Nickname Asteroid</button>
     </section>
@@ -75,6 +75,8 @@
     <%- include('../layout/footer')%>
   </footer>
   <script>
+    // linter errors are from the embedded javascript and don't impact functionality
+
     let midpoint = (<%= asteroid.diameter_feet_min %> + 5.5 + 605) / 3;
     let asteroidScale = <%= asteroid.diameter_feet_min %> / midpoint;
     let personScale = 5.5 / midpoint;
@@ -88,6 +90,7 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
   </script> 
+  <!-- brings in the google map -->
   <script src="../../js/app.js"></script>
   <script async defer src="<%= `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&callback=initMap` %>"></script>
 </body>

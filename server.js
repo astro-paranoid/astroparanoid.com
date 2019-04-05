@@ -57,13 +57,11 @@ function updateAsteroidName(request, response) {
   const values =[`${request.body.name} ${name}`, request.params.id];
 
   return client.query(updateSQL, values)
-    .then(sqlReturn => {
+    .then(sqlReturn => {//eslint-disable-line
       response.redirect(`/location/${request.params.id}`);
     })
     .catch(error => handleError(error));
 }
-
-//TODO: put in a route for the asteroidFromAPI function here. Comment out when finished
 
 //error handler for invalid endpoint
 app.use('*', (req, res) => res.render('./pages/error'));
@@ -75,7 +73,7 @@ function handleError(err, res, errorMessage){
 }
 
 
-//function to call down asteroids from API
+//function to call down asteroids from API and inserts info in our database
 
 function getAsteroidDataFromAPI(request, response) {
 
@@ -111,7 +109,7 @@ function getAsteroidDataFromAPI(request, response) {
                 asteroidListForDay.push(asteroidObj);
               });
 
-              // TODO: add max to table
+
               const maxInsert = `INSERT INTO daily_max_size (date, size) VALUES ($1, $2);`;
               const maxValues = [date, max];
               client.query(maxInsert, maxValues).catch(error => handleError(error));
@@ -146,7 +144,7 @@ function getAsteroidComparison(request, response){
     .catch(error => handleError(error, response));
 }
 
-function addAsteroidToLiked(request, response){
+function addAsteroidToLiked(request, response){//eslint-disable-line
   if (request.body.id) {
     let sql = `INSERT INTO liked (asteroid_id) VALUES ($1);`;
     let liked = [request.body.id];
@@ -156,7 +154,7 @@ function addAsteroidToLiked(request, response){
 }
 
 
-//Asteroid constructor
+//Asteroid constructor - pulls all data from NASA API.
 function Asteroid (asteroidData) {
   this.neo_ref_id = asteroidData.neo_reference_id;
   this.name = asteroidData.name;
