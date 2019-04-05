@@ -64,7 +64,7 @@ function getLikedAsteroids(request, response) {
 }
 
 function getAllAsteroids(request, response) {
-  const sql = `SELECT DISTINCT * FROM asteroids;`;
+  const sql = `SELECT DISTINCT * FROM asteroids ORDER BY diameter_feet_max DESC;`;
   client.query(sql)
     .then(sqlReturn => response.render('pages/all', {asteroids: sqlReturn.rows}))
     .catch(error => handleError(error));
