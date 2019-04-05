@@ -8,78 +8,82 @@
   <header>
     <%- include('../layout/header')%>
   </header>
-
+  <%- include('../layout/nav-bar') %>
+  <h2 id="date"><%= asteroid.name.toUpperCase() %></h2>
+  <br>
+  <p>(Click on images below to compare sizes)</p>
   <main id="location-wrapper">
-      <article class="" id="images-container">
-        <div>
-          <img src="<%= asteroid.img %>" alt="asteroid image" class="scale-image" id="asteroid-scale-image">
-        </div>
-        <div>
-          <img src="/images/needle.png" alt="space needle image" class="scale-image" id="needle-scale-image">
-        </div>
-        <div>
-          <img src="/images/astronaut.png" alt="astronaut image" class="scale-image" id="astronaut-scale-image">
-        </div>
-      </article>
-
-      <div id="map" style="height: 50vh"></div>
-
-      <div id="asteroid-stats">
-        <table id="asteroid-table">
-          <tr>
-            <td>Name: </td>
-            <td> <%=asteroid.name%></td>
-          </tr>
-          <tr>
-            <td>Is this a threat? </td>
-            <td> <%=asteroid.hazardous%></td>
-          </tr>
-          <tr>
-            <td>Size: </td>
-            <td> <%= Number(asteroid.diameter_feet_min).toFixed(2)%> - <%= Number(asteroid.diameter_feet_max).toFixed(2)%>
-              feet wide</td>
-          </tr>
-          <tr>
-            <td>Date it will be closest to Earth: </td>
-            <td> <%=asteroid.closest_date%></td>
-          </tr>
-          <tr>
-            <td>Velocity </td>
-            <td> <%= Number(asteroid.velocity_mph).toFixed(2)%></td>
-          </tr>
-          <tr>
-            <td>Set to miss Earth by:</td>
-            <td> <%= Number(asteroid.miss_distance_miles).toFixed(2)%> miles</td>
-          </tr>
-          <tr>
-            <td>On NASA's impact monitoring list?</td>
-            <td> <%=asteroid.sentry_object%></td>
-          </tr>
-        </table>
+    <article class="" id="images-container">
+      <div>
+        <img src="<%= asteroid.img %>" alt="asteroid image" class="scale-image" id="asteroid-scale-image">
       </div>
+      <div>
+        <img src="/images/needle.png" alt="space needle image" class="scale-image" id="needle-scale-image">
+      </div>
+      <div>
+        <img src="/images/astronaut.png" alt="astronaut image" class="scale-image" id="astronaut-scale-image">
+      </div>
+    </article>
+    <p class="caption">Size of asteroid compared to Seattle</p>
+    <div id="map" style="height: 50vh"></div>
+    <div id="asteroid-stats">
+      <p class="caption">Asteroid Stats</p>
+      <table id="asteroid-table">
+        <tr>
+          <td>Name: </td>
+          <td> <%=asteroid.name%></td>
+        </tr>
+        <tr>
+          <td>Is this asteroid a threat? </td>
+          <td> <%=(asteroid.hazardous) ? 'Yes' : 'No'%></td>
+        </tr>
+        <tr>
+          <td>Diameter: </td>
+          <td> <%= Number(asteroid.diameter_feet_min).toFixed(2)%> - <%= Number(asteroid.diameter_feet_max).toFixed(2)%>
+            ft</td>
+        </tr>
+        <tr>
+          <td>Date it will be closest to Earth: </td>
+          <td> <%=asteroid.closest_date%></td>
+        </tr>
+        <tr>
+          <td>Velocity: </td>
+          <td> <%= Number(asteroid.velocity_mph).toFixed(2)%> mph</td>
+        </tr>
+        <tr>
+          <td>Set to miss Earth by:</td>
+          <td> <%= Number(asteroid.miss_distance_miles).toFixed(2) %> miles</td>
+        </tr>
+        <tr>
+          <td>Monitored by Sentry Program?</td>
+          <td> <%=(asteroid.sentry_object) ? 'Yes' : 'No' %></td>
+        </tr>
+      </table>
+      <span class="likedbutton" id="<%= asteroid.id %>">
+        <i class="fas fa-heart fa-2x"></i>
+      </span>
+    </div>
 
-      <section class="user-input">
-        <form id="rename-form" class="hidden" action="/update/<%= asteroid.id %>/<%= asteroid.name %>" method="post">
-          <label for="name">Name:</label>
-          <input type="text" name="name" value="" placeholder="<%= asteroid.name %>">
-          <input type="submit" value="Submit">
-        </form>
-        <button id="rename-form-button" type="button">Rename Asteroid</button>
-      </section>
+    <section class="user-input hidden">
+      <form id="rename-form" class="hidden" action="/update/<%= asteroid.id %>/<%= asteroid.name %>" method="post">
+        <input id="rename-input" type="text" name="name" value="" placeholder="enter nickname">
+      </form>
+      <button id="rename-form-button" type="button">Nickname Asteroid</button>
+    </section>
   </main>
     
   <footer>
     <%- include('../layout/footer')%>
   </footer>
   <script>
-    var midpoint = (<%= asteroid.diameter_feet_min %> + 5.5 + 605) / 3;
-    var asteroidScale = <%= asteroid.diameter_feet_min %> / midpoint;
-    var personScale = 5.5 / midpoint;
-    var needleScale = 605 / midpoint;
+    // linter errors are from the embedded javascript and don't impact functionality
 
-    console.log('midpoint', midpoint);
+    let midpoint = (<%= asteroid.diameter_feet_min %> + 5.5 + 605) / 3;
+    let asteroidScale = <%= asteroid.diameter_feet_min %> / midpoint;
+    let personScale = 5.5 / midpoint;
+    let needleScale = 605 / midpoint;
 
-    var asteroidSize = { min: <%= asteroid.diameter_feet_min / 3.2808 %>, max: <%= asteroid.diameter_feet_max / 3.2808 %> };
+    let asteroidSize = { min: <%= asteroid.diameter_feet_min / 3.2808 %>, max: <%= asteroid.diameter_feet_max / 3.2808 %> };
   </script>
 
   <script
@@ -87,6 +91,7 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
   </script> 
+  <!-- brings in the google map -->
   <script src="../../js/app.js"></script>
   <script async defer src="<%= `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&callback=initMap` %>"></script>
 </body>

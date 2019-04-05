@@ -1,9 +1,10 @@
-footer{
+.fixed-nav{
   position:fixed;
   bottom:0;
   right:0;
   left:0;
-  background-color:rgba(31, 29, 29, 0.95);
+  background-color:rgba(0, 0, 0, 0.78);
+  z-index: 999;
 }
 
 .fixed-nav > ul{
@@ -16,6 +17,7 @@ footer{
   justify-content:center;
   align-items: center;
   padding-top:5vh;
+  padding-bottom: 40px;
   margin:auto;
   width:80vw;
 }
@@ -39,7 +41,7 @@ footer{
 
 /*styles for about page*/
 
-#about-wrapper{
+#about-wrapper {
 padding-bottom: 20vh;
 display: flex;
 justify-content: center;
@@ -48,27 +50,23 @@ flex-wrap: wrap;
 flex-direction: column;
 }
 
-#about-wrapper div{
-  border-radius: 25px;
-}
-
-#about-wrapper .left-dev{
+#about-wrapper > div {
+  /* border-radius: 25px; */
   display: flex;
-  border: 1px white solid;
+  /* border: 1px white solid; */
   width: 90%;
   max-width: 900px;
   padding: 10px 10px;
-  margin: 50px auto;
+  margin: 25px auto;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#about-wrapper .left-dev{
   flex-direction: row;
 }
 
 #about-wrapper .right-dev{
-  display: flex;
-  border: 1px white solid;
-  width: 90%;
-  max-width: 900px;
-  padding: 10px 10px;
-  margin: 50px auto;
   flex-direction: row-reverse;
 }
 

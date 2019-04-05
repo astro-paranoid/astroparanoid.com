@@ -17,15 +17,47 @@ h1{
   padding:20px 0;
   font-family:'Source Code Pro', monospace;
 }
+
+h3 {
+  font-size: 15pt;
+  margin: 10px 0;
+}
+
 a:visited, a:link {
   color: white;
 }
 
-button {
+.likedbutton {
+  border-radius: 50%;
+  /* background-color: white; */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+#rename-form-button, #rename-input {
   font-size: 15pt;
-  width: 200px;
+  width: 250px;
   height: 50px;
   border-radius: 2em;
   border: none;
-  background-color: rgba(238, 238, 238, 0.578);
+  background: white;
+  background-color: rgba(255, 255, 255);
+}
+
+#rename-input {
+  text-align: center;
+}
+
+p {
+  font-size: small;
+}
+
+header a {
+  text-decoration: none;
 }

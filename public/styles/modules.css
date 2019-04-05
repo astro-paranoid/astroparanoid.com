@@ -5,6 +5,7 @@
 
 #app-title:hover, #app-title:active{
   transform: scale(1.08);
+  transition: 0.5s;
 }
 
 .logo{
@@ -12,7 +13,6 @@
   min-width: 80px;
   max-width:120px;
   max-height:120px;
-  margin-top:10px;
   float:left;
 }
 
@@ -24,15 +24,18 @@
 
 .nav-item:hover, .nav-item:active {
   transform:scale(1.35);
+  transition: 0.5s;
 }
 
 .asteroid-image:hover {
   transform: scale(1.05);
+  transition: 0.5s;
   filter: brightness(0.5) sepia(1) saturate(10000%) hue-rotate(180deg);
 }
 
 .name-size {
-  margin: 10px 0 30px 0;
+  margin: 30px 0;
+
 }
 
 .name-size>h6,h4{
@@ -51,58 +54,48 @@
 }
 
 #date{
-  padding-top:40px;
   font-size: 15pt;
 }
 
 #map {
   width: 80%;
-  margin: 3vh auto;
+  margin: 10vh auto;
   border-radius: 1em;
+  margin-top:0;
 }
 
 /*styles for about page*/
-#about-wrapper div {
-  max-height: 125px;
-
+#about-wrapper div div {
+  /* max-height: 125px; */
+  width: 60%;
+  justify-content: center;
+  min-width: 310px;
 }
-
-
 
 .info-container p {
   overflow: hidden;
   padding-top: 1%;
-  font-size: 0.7em;
+  font-size: medium;
 }
 
 .info-container h4 {
   padding-bottom: 1%;
+  font-size: xx-large;
 }
 
 #about-wrapper div img{
- max-width: 100%;
- max-height: auto;
- min-width: 100px;
-}
-
-
-@media only screen and (min-width: 600px){
-
-  .info-container p {
-    font-size: 1em;
-  }
-
-  #about-wrapper div img{
-    border: 1px black solid;
-    border-radius: 50px;
-    min-width: 100px;
-  }
-
+ /* max-width: 10%; */
+ /* max-height: auto; */
+ /* min-width: 100px; */
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin: 20px 20px 50px 20px;
 }
 
 .scale-image {
   transition:5s;
-  height:100px;
+  height: 175px;
   margin: 20px 0;
   max-width: 95%;
 }
@@ -110,14 +103,19 @@
 #images-container {
   min-width: 375px;
   width: 90%;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  flex-wrap: wrap; */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.likedbutton {
+  cursor: pointer;
 }
 
 #images-container > div {
   margin: 2vh;
+  min-width: 345px;
+  max-width: 600px;
 }
 
 #location-wrapper {
@@ -128,17 +126,26 @@
 }
 
 #location-wrapper > * {
-  margin-bottom: 5vh;
+  margin-bottom: 50px;
 }
 
 #asteroid-stats{
   padding-bottom: 100px;
+  width: 60%;
+  min-width: 310px;
+}
+
+#asteroid-stats .caption {
+  width: 30%;
+  margin: 0 auto;
+  min-width: 200px;
 }
 
 #asteroid-table {
   border-collapse: separate;
   border-radius: 15px;
   border-spacing: 10px;
+  width: 100%;
 }
 
  tr, td{
@@ -152,3 +159,103 @@ td{
   padding: 15px;
   text-align: left;
 }
+
+.user-input {
+  position: fixed;
+  bottom: 5vh;
+}
+
+#mission-statement{
+  padding:15px;
+  border-radius: 15px;
+  width:80%;
+  margin: 5vh auto 15vh auto;;
+}
+
+#mission-statement p {
+  font-size:1.5em;
+  line-height: 2.75em;
+  letter-spacing: .07em;
+}
+
+@media(max-width:767px){
+  .nav-text{
+  display:none;
+  }
+  #mission-statement p{
+    line-height: 1.5em;
+  }
+  #mission-statement{
+    width:90%;
+  }
+}
+
+@media(min-width:768px){
+  .fixed-nav {
+    position: -webkit-sticky;
+    position: sticky;
+    max-height: 75px;
+    top: 0;
+    margin-bottom:5vh;
+    padding: 10px;
+    display:flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.95);
+  }
+  .nav-text{
+    display:inline-block;
+    font-size: x-large;
+  }
+
+  .nav-item i {
+    display: none;
+  }
+
+  #app-title{
+    padding-bottom:1vh;
+  }
+
+  .nav-item-link {
+    margin-right: 5vw;
+  }
+}
+
+.caption{
+  border:1px solid white;
+  padding:15px;
+  border-radius: 15px;
+  margin:0px;
+}
+
+#error-asteroid{
+  width:400px;
+}
+
+#error-message{
+  width:75%;
+  margin:auto;
+  font-size: 1.8em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
