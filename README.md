@@ -29,6 +29,7 @@ EJS
 dotenv
 
 ## APIs Used:
+
 NASA NeoWs API
 
 Google Maps JavaScript API
@@ -43,6 +44,7 @@ Google Maps JavaScript API
         3d) PORT=[PORT num to run server on]
     4) Start up server using nodemon
     5) Have fun!
+
 
 ## Contributions and Sources
 Background video: https://www.pexels.com/video/animation-of-stars-857052/

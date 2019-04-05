@@ -64,7 +64,7 @@ app.post('/update/:id/:name', updateAsteroidName);
 //error handler for invalid endpoint
 app.use('*', (req, res) => res.render('./pages/error'));
 
-// Gets all the liked asteroids from the database 
+// Gets all the liked asteroids from the database
 function getLikedAsteroids(request, response) {
   const sql = `SELECT DISTINCT asteroids.* FROM asteroids JOIN liked ON liked.asteroid_id=asteroids.id;`;
   client.query(sql)
@@ -89,7 +89,7 @@ function updateAsteroidName(request, response) {
   const values =[`${request.body.name} ${name}`, request.params.id];
 
   return client.query(updateSQL, values)
-    .then(sqlReturn => {
+    .then(sqlReturn => {//eslint-disable-line
       response.redirect(`/location/${request.params.id}`);
     })
     .catch(error => handleError(error));
@@ -144,10 +144,10 @@ function getAsteroidDataFromAPI(request, response) {
                 let asteroidObj = new Asteroid(asteroid);
                 // check if asteroid is the largest
                 max = (asteroidObj.diameter_feet_max > max) ? asteroidObj.diameter_feet_max : max;
-                // image for the asteroid, setting here so it's consistent across pages 
+                // image for the asteroid, setting here so it's consistent across pages
                 // (8 is the current number of images we have drawn)
                 asteroidObj.img = `/images/asteroid${idx%8}.png`;
-                
+
                 // insert obj into database
                 const insertSQL = `INSERT INTO asteroids (neo_ref_id, name, hazardous, miss_distance_miles, diameter_feet_min, diameter_feet_max, velocity_mph, sentry_object, closest_date, img) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;`;
                 const insertValues = Object.values(asteroidObj).slice(0,10);
@@ -202,7 +202,7 @@ function getAsteroidComparison(request, response){
 }
 
 // add asteroid to liked table
-function addAsteroidToLiked(request, response){
+function addAsteroidToLiked(request, response){//eslint-disable-line
   if (request.body.id) {
     let sql = `INSERT INTO liked (asteroid_id) VALUES ($1);`;
     let liked = [request.body.id];
