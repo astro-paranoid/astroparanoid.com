@@ -76,6 +76,8 @@
     <%- include('../layout/footer')%>
   </footer>
   <script>
+    // linter errors are from the embedded javascript and don't impact functionality
+
     let midpoint = (<%= asteroid.diameter_feet_min %> + 5.5 + 605) / 3;
     let asteroidScale = <%= asteroid.diameter_feet_min %> / midpoint;
     let personScale = 5.5 / midpoint;
@@ -89,6 +91,7 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
   </script> 
+  <!-- brings in the google map -->
   <script src="../../js/app.js"></script>
   <script async defer src="<%= `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API}&callback=initMap` %>"></script>
 </body>
