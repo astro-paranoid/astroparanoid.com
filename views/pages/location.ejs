@@ -35,7 +35,7 @@
         </tr>
         <tr>
           <td>Is this asteroid a threat? </td>
-          <td> <%=asteroid.hazardous%></td>
+          <td> <%=(asteroid.hazardous) ? 'Yes' : 'No'%></td>
         </tr>
         <tr>
           <td>Diameter: </td>
@@ -47,7 +47,7 @@
           <td> <%=asteroid.closest_date%></td>
         </tr>
         <tr>
-          <td>Velocity </td>
+          <td>Velocity: </td>
           <td> <%= Number(asteroid.velocity_mph).toFixed(2)%> mph</td>
         </tr>
         <tr>
@@ -55,8 +55,8 @@
           <td> <%= Number(asteroid.miss_distance_miles).toFixed(2) %> miles</td>
         </tr>
         <tr>
-          <td>On NASA's impact monitoring list?</td>
-          <td> <%=asteroid.sentry_object%></td>
+          <td>Monitored by Sentry Program?</td>
+          <td> <%=(asteroid.sentry_object) ? 'Yes' : 'No' %></td>
         </tr>
       </table>
       <span class="likedbutton" id="<%= asteroid.id %>">
