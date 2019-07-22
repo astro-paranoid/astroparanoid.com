@@ -53,10 +53,15 @@ Google Maps JavaScript API
 
 ## Contributions and Sources
 Background video: https://www.pexels.com/video/animation-of-stars-857052/
+
 Google map overlays: https://developers.google.com/maps/documentation/javascript/examples/circle-simple
+
 Map API: https://developers.google.com/maps/documentation/javascript/reference/#MapOptions%22
+
 NASA API: https://api.nasa.gov/api.html#neows-lookup
+
 App Font: https://fonts.google.com/specimen/Comfortaa
+
 Mobile Icons: https://fontawesome.com/  
 
 
