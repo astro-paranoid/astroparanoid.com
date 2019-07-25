@@ -2,7 +2,7 @@
 
 Daily asteroid tracker to feed your paranoia.
 
-astroparanoid.com
+[astroparanoid.com](https://www.astroparanoid.com/)
 
 ## Project Authors:
 Aliya Summers
