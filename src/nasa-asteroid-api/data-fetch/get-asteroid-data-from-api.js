@@ -20,8 +20,8 @@ const getAsteroidDataFromDB = require('../../database-methods/get-asteroid-data-
  */
 module.exports = async (request, response) => {
   // check if data exists for today in database
-  const dbResults = await getAsteroidDataFromDB(request, response);
-  
+  const dbResults = await getAsteroidDataFromDB();
+
   // database has asteroid data for today
   if (dbResults.length) {
     response.render('pages/index', {
@@ -67,7 +67,10 @@ module.exports = async (request, response) => {
   }
 };
 
-// Asteroid constructor
+/**
+ * Asteroid Object constructor
+ * @param {Object} asteroidData
+ */
 function Asteroid(asteroidData) {
   this.neo_ref_id = asteroidData.neo_reference_id;
   this.name = asteroidData.name;
@@ -80,6 +83,10 @@ function Asteroid(asteroidData) {
   this.closest_date = asteroidData.close_approach_data[0].close_approach_date;
 }
 
+/**
+ * Add asteroid object to database
+ * @param {Object} asteroidObj
+ */
 function addAsteroidToDatabase(asteroidObj) {
   const insertSQL = `INSERT INTO asteroids (neo_ref_id, name, hazardous, miss_distance_miles, diameter_feet_min, diameter_feet_max, velocity_mph, sentry_object, closest_date, img) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id;`;
   const insertValues = Object.values(asteroidObj).slice(0, 10);
