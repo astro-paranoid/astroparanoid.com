@@ -2,7 +2,7 @@
 
 Daily asteroid tracker to feed your paranoia.
 
-astroparanoid.com
+[astroparanoid.com](https://www.astroparanoid.com/)
 
 ## Project Authors:
 Aliya Summers
@@ -29,25 +29,39 @@ EJS
 dotenv
 
 ## APIs Used:
+
 NASA NeoWs API
 
 Google Maps JavaScript API
 
 ## Instructions for running locally:
     1) Download repo
+    
     2) Run 'npm i'
+    
     3) Set up .env file with variables with the following:
-        3a) DATABASE_URL=[url to your postgreSQL database]
-        3b) ASTEROID_API=[NASA API KEY]
-        3c) GOOGLE_MAPS_API=[GOOGLE MAPS JAVASCRIPT API KEY]
-        3d) PORT=[PORT num to run server on]
+    
+        a) DATABASE_URL=[url to your postgreSQL database]
+        b) ASTEROID_API=[NASA API KEY]
+        c) GOOGLE_MAPS_API=[GOOGLE MAPS JAVASCRIPT API KEY]
+        d) PORT=[PORT num to run server on]
+        
     4) Start up server using nodemon
+    
     5) Have fun!
+
 
 ## Contributions and Sources
 Background video: https://www.pexels.com/video/animation-of-stars-857052/
+
 Google map overlays: https://developers.google.com/maps/documentation/javascript/examples/circle-simple
+
 Map API: https://developers.google.com/maps/documentation/javascript/reference/#MapOptions%22
+
 NASA API: https://api.nasa.gov/api.html#neows-lookup
+
+App Font: https://fonts.google.com/specimen/Comfortaa
+
+Mobile Icons: https://fontawesome.com/  
 
 
