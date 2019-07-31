@@ -24,10 +24,12 @@ module.exports = (request, response) => {
   // TODO: currently have a function to get today's date in YYYY-MM-DD format, make sure DATE() doesn't have a simple way of doing this
   const selectValues = [getTodayDate()];
 
+  console.log();
   // check database for today's asteroids
   client
     .query(selectSQL, selectValues)
     .then((selectReturn) => {
+      // if data for today not present in database
       if (!selectReturn.rowCount) {
         const asteroidUrl = `https://api.nasa.gov/neo/rest/v1/feed?api_key=${process.env.ASTEROID_API}`;
 
@@ -79,7 +81,9 @@ module.exports = (request, response) => {
             response.render('pages/index', { asteroidList: asteroidListForWeek[0] });
           })
           .catch((error) => handleError(error, response, 'Cannot connect to NASA asteroid API'));
-      } else {
+      } 
+      // data exists in database
+      else {
         // gets max for today
         const maxSelect = `SELECT size FROM daily_max_size WHERE date=$1`;
 

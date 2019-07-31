@@ -25,7 +25,6 @@ const PORT = process.env.PORT;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
-// LISTEN ON PORT
 app.listen(PORT, () => console.log(`Astro-Paranoid listening on ${PORT}`));
 
 // ------------------------------------------------------------------------------------------------
@@ -38,27 +37,29 @@ app.get('/', getAsteroidDataFromAPI);
 // more details page, shows asteroid scale, map, and info
 app.get('/location/:id', getAsteroidComparison);
 
-// about page, information about the developers
-app.get('/about', (request, response) => {
-  response.render('./pages/about');
-});
-
 // liked page, has all the liked asteroids by every user
 app.get('/liked', getLikedAsteroids);
 
 // all page, all the asteroids in the database
 app.get('/all', getAllAsteroids);
 
-// application info page, purpose/goal of the application
-app.get('/info', (request, response) => {
-  response.render('./pages/info');
-});
-
 // adds asteroid to liked table in database
 app.post('/likeAsteroid', addAsteroidToLiked);
 
 // updates the name of the asteroid
 app.post('/update/:id/:name', updateAsteroidName);
+
+// Page directs ---------------------------------------------------------------
+
+// about page, information about the developers
+app.get('/about', (request, response) => {
+  response.render('./pages/about');
+});
+
+// application info page, purpose/goal of the application
+app.get('/info', (request, response) => {
+  response.render('./pages/info');
+});
 
 //error handler for invalid endpoint
 app.use('*', (req, res) => res.render('./pages/error'));
