@@ -2,7 +2,7 @@
 
 Daily asteroid tracker to feed your paranoia.
 
-astroparanoid.com
+[astroparanoid.com](https://www.astroparanoid.com/)
 
 ## Project Authors:
 Aliya Summers
@@ -59,5 +59,9 @@ Google map overlays: https://developers.google.com/maps/documentation/javascript
 Map API: https://developers.google.com/maps/documentation/javascript/reference/#MapOptions%22
 
 NASA API: https://api.nasa.gov/api.html#neows-lookup
+
+App Font: https://fonts.google.com/specimen/Comfortaa
+
+Mobile Icons: https://fontawesome.com/  
 
 
