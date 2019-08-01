@@ -1,63 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
- @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
- @import url('https://fonts.googleapis.com/css?family=Comfortaa');
-
- *{
-   box-sizing: border-box;
- }
-body{
-  background-color:black;
-  color:white;
-  text-align: center;
-  font-family: 'Comfortaa', cursive;
+* {
+	box-sizing: border-box;
 }
 
-h1{
-  font-size:35pt;
-  padding:20px 0;
-  font-family:'Source Code Pro', monospace;
+body {
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-family: 'Comfortaa', cursive;
+}
+
+h1 {
+	font-size: 35pt;
+	padding: 20px 0;
+	font-family: 'Source Code Pro', monospace;
 }
 
 h3 {
-  font-size: 15pt;
-  margin: 10px 0;
+	font-size: 15pt;
+	margin: 10px 0;
 }
 
-a:visited, a:link {
-  color: white;
+a:visited,
+a:link {
+	color: white;
 }
 
 .likedbutton {
-  border-radius: 50%;
-  /* background-color: white; */
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  width: 50px;
-  height: 50px;
-  margin: 0 auto;
+	border-radius: 50%;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
 }
 
-#rename-form-button, #rename-input {
-  font-size: 15pt;
-  width: 250px;
-  height: 50px;
-  border-radius: 2em;
-  border: none;
-  background: white;
-  background-color: rgba(255, 255, 255);
+#rename-form-button,
+#rename-input {
+	font-size: 15pt;
+	width: 250px;
+	height: 50px;
+	border-radius: 2em;
+	border: none;
+	background: white;
+	background-color: rgba(255, 255, 255);
 }
 
 #rename-input {
-  text-align: center;
+	text-align: center;
 }
 
 p {
-  font-size: small;
+	font-size: small;
 }
 
 header a {
-  text-decoration: none;
+	text-decoration: none;
 }

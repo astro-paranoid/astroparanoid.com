@@ -1,80 +1,79 @@
-.fixed-nav{
-  position:fixed;
-  bottom:0;
-  right:0;
-  left:0;
-  background-color:rgba(0, 0, 0, 0.78);
-  z-index: 999;
+.fixed-nav {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.78);
+	z-index: 999;
 }
 
-.fixed-nav > ul{
-  display:flex;
-  justify-content: space-evenly;
+.fixed-nav>ul {
+	display: flex;
+	justify-content: space-evenly;
 }
 
-#app-title{
-  display:flex;
-  justify-content:center;
-  align-items: center;
-  padding-top:5vh;
-  padding-bottom: 40px;
-  margin:auto;
-  width:80vw;
+#app-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 5vh;
+	padding-bottom: 40px;
+	margin: auto;
+	width: 80vw;
 }
 
 #content-wrapper {
-  padding-bottom: 40vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+	padding-bottom: 40vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
 #background-video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100vw;
-  min-height: 100vh;
-  z-index: -1;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100vw;
+	min-height: 100vh;
+	z-index: -1;
 }
+
 
 /*styles for about page*/
 
 #about-wrapper {
-padding-bottom: 20vh;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-wrap: wrap;
-flex-direction: column;
+	padding-bottom: 20vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
 }
 
-#about-wrapper > div {
-  /* border-radius: 25px; */
-  display: flex;
-  /* border: 1px white solid; */
-  width: 90%;
-  max-width: 900px;
-  padding: 10px 10px;
-  margin: 25px auto;
-  justify-content: space-around;
-  flex-wrap: wrap;
+#about-wrapper>div {
+	display: flex;
+	width: 90%;
+	max-width: 900px;
+	padding: 10px 10px;
+	margin: 25px auto;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
-#about-wrapper .left-dev{
-  flex-direction: row;
+#about-wrapper .left-dev {
+	flex-direction: row;
 }
 
-#about-wrapper .right-dev{
-  flex-direction: row-reverse;
+#about-wrapper .right-dev {
+	flex-direction: row-reverse;
 }
 
 .hidden {
-  display: none;
+	display: none;
 }
 
 .info-container {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
